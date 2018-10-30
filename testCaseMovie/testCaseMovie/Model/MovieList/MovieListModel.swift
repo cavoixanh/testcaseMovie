@@ -12,5 +12,5 @@ struct MovieListModel : Codable {
     let page: Int32
     let total_results : Int64
     let total_pages : Int64
-    let results : [MovieModel]
+    var results : [MovieModel]
 }

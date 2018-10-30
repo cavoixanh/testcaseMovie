@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = UINavigationController(rootViewController: MovieListViewController(nibName: "MovieListViewController", bundle: nil))//tabBarController
+        window?.rootViewController = UINavigationController(rootViewController: MovieListViewController(nibName: "MovieListViewController", bundle: nil))
         window?.makeKeyAndVisible()
         
         return true

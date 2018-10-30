@@ -9,24 +9,31 @@
 import UIKit
 import RxSwift
 import RxCocoa
-import RxDataSources
 
-let minHeightCell = 148
+let minHeightCell = 163
 
 class MovieListViewModel: NSObject, UITableViewDelegate, UITableViewDataSource {
     
     var disposeBag = DisposeBag()
-    var movieListModel : MovieListModel?
-    var reloadTableView : (()->())?
+    var movieModelArray : [MovieModel] = []
+    var reloadTableViewBlock : (()->())?
+    var didSelectModelBlock : ((MovieModel)->())?
+    var page : Int = 1
+    var isOfflineMode = true
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return movieListModel?.results.count ?? 0;
+        return movieModelArray.count ;
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MovieListCell", for: indexPath) as! MovieListCell
         cell.minHeight = CGFloat(minHeightCell)
-        cell.setMovieModel(aMovieModel: (movieListModel?.results[indexPath.row])!)
+        cell.setMovieModel(aMovieModel: (movieModelArray[indexPath.row]))
+        if !isOfflineMode && indexPath.row == ((movieModelArray.count) - 3){
+            page+=1
+            fetchData()
+        }
         return cell
     }
     
@@ -34,23 +41,74 @@ class MovieListViewModel: NSObject, UITableViewDelegate, UITableViewDataSource {
         return UITableView.automaticDimension
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        if self.didSelectModelBlock != nil {
+            self.didSelectModelBlock!(movieModelArray[indexPath.row])
+        }
+        
+        
+    }
+    
     
     static let movieListViewModel = MovieListViewModel()
     
     func fetchData(){
-        APIService.fetchMovieList().subscribe(
-            onNext: {(dataModel) in
-                self.movieListModel = dataModel
-                if self.reloadTableView != nil{
-                    self.reloadTableView!()
-                }
-                
-        },
-            onError: {(error) in
-                //self.state.value = .networkError
-        },
-            onCompleted: {
-                //self.state.value = .unknownWord
-        }).disposed(by: disposeBag)
+        if isOfflineMode {
+            APIService.getDataListMovieFromLocal().subscribe(
+                onNext: {(movieList) in
+                    self.movieModelArray = movieList
+                    if movieList.count > 0 && self.reloadTableViewBlock != nil{
+                        self.reloadTableViewBlock!()
+                    }
+                    
+                    APIService.fetchMovieList(page: self.page).subscribe(
+                        onNext: {(dataModel) in
+                            
+                            if self.page == 1 {
+                                self.movieModelArray.removeAll()
+                            }
+                            self.isOfflineMode = false
+                            self.movieModelArray += dataModel.results
+                            
+                            if self.reloadTableViewBlock != nil{
+                                self.reloadTableViewBlock!()
+                            }
+                    },
+                        onError: {(error) in
+                            self.isOfflineMode = true
+                            //self.state.value = .networkError
+                    },
+                        onCompleted: {
+                            
+                    }).disposed(by: self.disposeBag)
+            },
+                onError: {(error) in
+                    //self.state.value = .networkError
+            },
+                onCompleted: {
+                    
+            }).disposed(by: disposeBag)
+        }else{
+            APIService.fetchMovieList(page: self.page).subscribe(
+                onNext: {(dataModel) in
+                    self.movieModelArray += dataModel.results
+                    
+                    if self.reloadTableViewBlock != nil{
+                        self.reloadTableViewBlock!()
+                    }
+                    
+            },
+                onError: {(error) in
+                    self.isOfflineMode = true
+                    //self.state.value = .networkError
+            },
+                onCompleted: {
+                    
+            }).disposed(by: self.disposeBag)
+        }
+        
+        
+        
     }
 }

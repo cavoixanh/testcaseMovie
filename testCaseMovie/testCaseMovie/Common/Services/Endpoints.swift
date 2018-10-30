@@ -11,6 +11,7 @@ import UIKit
 struct API {
     static let baseUrl = "https://api.themoviedb.org"
     static let apiKey = "14bc774791d9d20b3a138bb6e26e2579"
+    static let imageThumnbUrl = "https://image.tmdb.org/t/p/w200"
 }
 
 protocol Endpoint {

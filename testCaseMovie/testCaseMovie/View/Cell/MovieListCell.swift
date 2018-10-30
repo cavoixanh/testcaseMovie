@@ -27,9 +27,14 @@ class MovieListCell: UITableViewCell {
     
     func setMovieModel(aMovieModel: MovieModel){
         self.movieModel = aMovieModel
+        self.thumbImage.image = nil
         titleLabel.text = aMovieModel.title
         dateLabel.text = aMovieModel.release_date
         descriptionLabel.text = aMovieModel.overview
+        let path = API.imageThumnbUrl + (aMovieModel.poster_path ?? "")
+        APIService.shared.requestImage(path: path) { (image) in
+            self.thumbImage.image = image
+        }
     }
     
 }

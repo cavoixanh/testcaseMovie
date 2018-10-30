@@ -24,6 +24,13 @@
 		841FC4E121883DD400889135 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841FC4E021883DD400889135 /* Extensions.swift */; };
 		841FC4E5218844D000889135 /* MovieListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841FC4E3218844D000889135 /* MovieListCell.swift */; };
 		841FC4E6218844D000889135 /* MovieListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 841FC4E4218844D000889135 /* MovieListCell.xib */; };
+		8438D3E02188B8D300A4F1C9 /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8438D3DE2188B8D300A4F1C9 /* MovieDetailViewController.swift */; };
+		8438D3E12188B8D300A4F1C9 /* MovieDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8438D3DF2188B8D300A4F1C9 /* MovieDetailViewController.xib */; };
+		8438D3E32188B91400A4F1C9 /* MovieDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8438D3E22188B91400A4F1C9 /* MovieDetailViewModel.swift */; };
+		8438D3E62188C48000A4F1C9 /* DetailHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8438D3E42188C48000A4F1C9 /* DetailHeaderCell.swift */; };
+		8438D3E72188C48000A4F1C9 /* DetailHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8438D3E52188C48000A4F1C9 /* DetailHeaderCell.xib */; };
+		8438D3EA2188C49300A4F1C9 /* DetailContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8438D3E82188C49300A4F1C9 /* DetailContentCell.swift */; };
+		8438D3EB2188C49300A4F1C9 /* DetailContentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8438D3E92188C49300A4F1C9 /* DetailContentCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +54,13 @@
 		841FC4E021883DD400889135 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		841FC4E3218844D000889135 /* MovieListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListCell.swift; sourceTree = "<group>"; };
 		841FC4E4218844D000889135 /* MovieListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieListCell.xib; sourceTree = "<group>"; };
+		8438D3DE2188B8D300A4F1C9 /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
+		8438D3DF2188B8D300A4F1C9 /* MovieDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieDetailViewController.xib; sourceTree = "<group>"; };
+		8438D3E22188B91400A4F1C9 /* MovieDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewModel.swift; sourceTree = "<group>"; };
+		8438D3E42188C48000A4F1C9 /* DetailHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHeaderCell.swift; sourceTree = "<group>"; };
+		8438D3E52188C48000A4F1C9 /* DetailHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailHeaderCell.xib; sourceTree = "<group>"; };
+		8438D3E82188C49300A4F1C9 /* DetailContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailContentCell.swift; sourceTree = "<group>"; };
+		8438D3E92188C49300A4F1C9 /* DetailContentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailContentCell.xib; sourceTree = "<group>"; };
 		D321E13FD0967F4BCB21123A /* Pods-testCaseMovie.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-testCaseMovie.debug.xcconfig"; path = "Pods/Target Support Files/Pods-testCaseMovie/Pods-testCaseMovie.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -146,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				841FC4D921883C6500889135 /* MovieListViewModel.swift */,
+				8438D3E22188B91400A4F1C9 /* MovieDetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -156,6 +171,8 @@
 				841FC4E2218844A700889135 /* Cell */,
 				841FC4DB21883C9F00889135 /* MovieListViewController.swift */,
 				841FC4DC21883C9F00889135 /* MovieListViewController.xib */,
+				8438D3DE2188B8D300A4F1C9 /* MovieDetailViewController.swift */,
+				8438D3DF2188B8D300A4F1C9 /* MovieDetailViewController.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -173,6 +190,10 @@
 			children = (
 				841FC4E3218844D000889135 /* MovieListCell.swift */,
 				841FC4E4218844D000889135 /* MovieListCell.xib */,
+				8438D3E42188C48000A4F1C9 /* DetailHeaderCell.swift */,
+				8438D3E52188C48000A4F1C9 /* DetailHeaderCell.xib */,
+				8438D3E82188C49300A4F1C9 /* DetailContentCell.swift */,
+				8438D3E92188C49300A4F1C9 /* DetailContentCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -245,8 +266,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8438D3E72188C48000A4F1C9 /* DetailHeaderCell.xib in Resources */,
+				8438D3E12188B8D300A4F1C9 /* MovieDetailViewController.xib in Resources */,
 				841FC4C0218813E600889135 /* LaunchScreen.storyboard in Resources */,
 				841FC4BD218813E600889135 /* Assets.xcassets in Resources */,
+				8438D3EB2188C49300A4F1C9 /* DetailContentCell.xib in Resources */,
 				841FC4BB218813E500889135 /* Main.storyboard in Resources */,
 				841FC4E6218844D000889135 /* MovieListCell.xib in Resources */,
 				841FC4DE21883C9F00889135 /* MovieListViewController.xib in Resources */,
@@ -268,6 +292,7 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/Default/Default.framework",
 				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
@@ -282,6 +307,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Default.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
@@ -325,13 +351,17 @@
 			files = (
 				841FC4E5218844D000889135 /* MovieListCell.swift in Sources */,
 				841FC4D62188354300889135 /* MovieModel.swift in Sources */,
+				8438D3EA2188C49300A4F1C9 /* DetailContentCell.swift in Sources */,
 				841FC4D4218834D100889135 /* MovieListModel.swift in Sources */,
 				841FC4B8218813E500889135 /* ViewController.swift in Sources */,
+				8438D3E02188B8D300A4F1C9 /* MovieDetailViewController.swift in Sources */,
+				8438D3E32188B91400A4F1C9 /* MovieDetailViewModel.swift in Sources */,
 				841FC4DA21883C6500889135 /* MovieListViewModel.swift in Sources */,
 				841FC4CC2188172000889135 /* APIService.swift in Sources */,
 				841FC4E121883DD400889135 /* Extensions.swift in Sources */,
 				841FC4D0218825F000889135 /* Constant.swift in Sources */,
 				841FC4DD21883C9F00889135 /* MovieListViewController.swift in Sources */,
+				8438D3E62188C48000A4F1C9 /* DetailHeaderCell.swift in Sources */,
 				841FC4CE218817D300889135 /* Endpoints.swift in Sources */,
 				841FC4B6218813E500889135 /* AppDelegate.swift in Sources */,
 			);

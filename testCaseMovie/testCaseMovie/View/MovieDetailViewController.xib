@@ -10,9 +10,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MovieListViewController" customModule="testCaseMovie" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MovieDetailViewController" customModule="testCaseMovie" customModuleProvider="target">
             <connections>
-                <outlet property="tableView" destination="NsX-SS-IVv" id="39j-OL-z0R"/>
+                <outlet property="tableView" destination="3iI-Fg-DOc" id="WPL-Yx-BHp"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -21,20 +21,19 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NsX-SS-IVv">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3iI-Fg-DOc">
                     <rect key="frame" x="0.0" y="20" width="375" height="647"/>
-                    <color key="backgroundColor" red="0.086274509803921567" green="0.11372549019607843" blue="0.14509803921568626" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
             </subviews>
-            <color key="backgroundColor" red="0.086274509803921567" green="0.11372549019607843" blue="0.14509803921568626" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="NsX-SS-IVv" secondAttribute="bottom" id="2PQ-8L-luz"/>
-                <constraint firstItem="NsX-SS-IVv" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="46E-na-fsH"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="NsX-SS-IVv" secondAttribute="trailing" id="Gnz-Jd-eh1"/>
-                <constraint firstItem="NsX-SS-IVv" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="KGk-Gd-6KW"/>
+                <constraint firstItem="3iI-Fg-DOc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="5MB-bT-nJN"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="3iI-Fg-DOc" secondAttribute="trailing" id="CH2-cd-dj1"/>
+                <constraint firstItem="3iI-Fg-DOc" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="OvZ-W5-fow"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="3iI-Fg-DOc" secondAttribute="bottom" id="VFA-Uh-ZsK"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="-3575" y="66"/>
         </view>
     </objects>
 </document>

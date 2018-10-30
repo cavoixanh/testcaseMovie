@@ -5,6 +5,7 @@ PODS:
   - AlamofireObjectMapper (5.1.0):
     - Alamofire (~> 4.1)
     - ObjectMapper (~> 3.3)
+  - Default (2.1.0)
   - Differentiator (3.1.0)
   - ObjectMapper (3.3.0)
   - RxCocoa (4.3.1):
@@ -19,6 +20,7 @@ PODS:
 DEPENDENCIES:
   - AlamofireImage (~> 3.1)
   - AlamofireObjectMapper (~> 5.0)
+  - Default
   - RxCocoa (~> 4.0)
   - RxDataSources (~> 3.0)
   - RxSwift (~> 4.0)
@@ -29,6 +31,7 @@ SPEC REPOS:
     - Alamofire
     - AlamofireImage
     - AlamofireObjectMapper
+    - Default
     - Differentiator
     - ObjectMapper
     - RxCocoa
@@ -40,6 +43,7 @@ SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
   AlamofireImage: 78d67ccbb763d87ba44b21583d2153500a195630
   AlamofireObjectMapper: 3395e698901d8b0e6f48b7d0c43bd47875325102
+  Default: 6b79a17b84763dac64c2e49ea1198c00ce8c2631
   Differentiator: be49ca3408f0ecfc761e4c7763d20c62be01b9ad
   ObjectMapper: b612bf8c8e99c4dc0bb6013a51f7c27966ed5da9
   RxCocoa: 78763c7b07d02455598d9fc3c1ad091a28b73635
@@ -47,6 +51,6 @@ SPEC CHECKSUMS:
   RxSwift: fe0fd770a43acdb7d0a53da411c9b892e69bb6e4
   SwiftyJSON: f57b2b44bc166617372d1c70773591fe9f0f5fd4
 
-PODFILE CHECKSUM: 968877e55f904614e2dbed5a5e7da130f549b560
+PODFILE CHECKSUM: 699ef4b862b1a8bf1928591da45c7c7313de16ee
 
 COCOAPODS: 1.5.3

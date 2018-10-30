@@ -14,13 +14,26 @@ class MovieListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpUI()
         MovieListViewModel.movieListViewModel.fetchData()
         tableView.register(UINib(nibName: "MovieListCell", bundle: nil), forCellReuseIdentifier: "MovieListCell")
         tableView.delegate = MovieListViewModel.movieListViewModel
         tableView.dataSource = MovieListViewModel.movieListViewModel
         tableView.estimatedRowHeight = UITableView.automaticDimension
-        MovieListViewModel.movieListViewModel.reloadTableView = {
+        MovieListViewModel.movieListViewModel.reloadTableViewBlock = {
             self.tableView.reloadData()
         }
+        MovieListViewModel.movieListViewModel.didSelectModelBlock = { model in
+            let detailViewcontroller = MovieDetailViewController(nibName: "MovieDetailViewController", bundle: nil)
+            detailViewcontroller.movieModel = model
+            self.navigationController?.pushViewController(detailViewcontroller, animated: true)
+        }
+    }
+    
+    func setUpUI(){
+        self.navigationController?.navigationBar.barTintColor = UIColor(rgb: 0x273446)
+        self.navigationController?.navigationBar.topItem?.title = "Movie List"
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+
     }
 }

@@ -9,33 +9,35 @@
 import UIKit
 import Alamofire
 import AlamofireObjectMapper
+import AlamofireImage
 import RxSwift
 import SwiftyJSON
 import ObjectMapper
+import Default
 
 class APIService {
     static let shared = APIService()
     
-//    func requestImage(path: String, completionHandler: @escaping (UIImage) -> Void){
-//        AlamofireManager.manager.request("\(path)").responseImage(imageScale: 1.0, inflateResponseImage: false, completionHandler: {response in
-//            guard let image = response.result.value else{
-//                print("download\(path)->\(response.result)")
-//                return
-//            }
-//            DispatchQueue.main.async {
-//                completionHandler(image)
-//            }
-//        })
-//    }
+    func requestImage(path: String, completionHandler: @escaping (UIImage) -> Void){
+        AlamofireManager.manager.request("\(path)").responseImage(imageScale: 1.0, inflateResponseImage: false, completionHandler: {response in
+            guard let image = response.result.value else{
+                print("download\(path)->\(response.result)")
+                return
+            }
+            DispatchQueue.main.async {
+                completionHandler(image)
+            }
+        })
+    }
     
-    static func fetchMovieList() -> Observable<MovieListModel> {
+    static func fetchMovieList(page: Int) -> Observable<MovieListModel> {
         return Observable.create{ observer in
             
             let headers = [
                 "Content-Type": "application/json",
             ]
             
-            let requestURL:String = Endpoints.MovieList.fetch.url
+            let requestURL:String = Endpoints.MovieList.fetch.url + "&page=\(page)"
             
             let _ = AlamofireManager.manager.request(requestURL, method: .put, parameters:[:], encoding: JSONEncoding.default, headers:headers)
                 .responseJSON{response in
@@ -44,18 +46,21 @@ class APIService {
                     
                     switch response.result {
                     case .success:
-                        print(response.result.value!)
                         let json = JSON(response.result.value!)
                         
                         let jsonData = "\(json)".data(using: .utf8)!
                         let decoder = JSONDecoder()
-                        let movieList = try! decoder.decode(MovieListModel.self, from: jsonData)
-                        
-                        //let userdefault = UserDefaults.standard
-                        //userdefault.set(json.rawString(), forKey: "CustomerProfile")
-                        
-                        observer.onNext(movieList)
-                        observer.onCompleted()
+                        do{
+                            let movieList = try decoder.decode(MovieListModel.self, from: jsonData)
+                            if page == 1 {
+                                self.removeCacheData()
+                            }
+                            self.saveDataListMovieToLocal(model: movieList)
+                            observer.onNext(movieList)
+                            observer.onCompleted()
+                        } catch{
+                            print(response.result.value!)
+                        }
                     case .failure(let error):
                         if error._code == NSURLErrorTimedOut {
                             //                            forcedToast(ErrorTimeoutMessageLocalization)
@@ -114,6 +119,35 @@ class APIService {
                 
             })
         }
+    }
+    
+    static func saveDataListMovieToLocal(model:MovieListModel){
+        if let arr = UserDefaults.standard.df.fetch(forKey: Constant.LIST_MOVIE_DATA, type: [MovieModel].self) {
+            let tempArray = arr + model.results
+            UserDefaults.standard.df.store(tempArray, forKey: Constant.LIST_MOVIE_DATA)
+        }else{
+            UserDefaults.standard.df.store(model.results, forKey: Constant.LIST_MOVIE_DATA)
+        }
+    }
+    
+    static func getDataListMovieFromLocal() -> Observable<[MovieModel]> {
+    
+        return Observable.create{ observer in
+    
+            if let arr = UserDefaults.standard.df.fetch(forKey: Constant.LIST_MOVIE_DATA, type: [MovieModel].self) {
+                observer.onNext(arr)
+            }else{
+                observer.onNext([])
+            }
+            observer.onCompleted()
+            return Disposables.create(with: {
+    
+            })
+        }
+    }
+    
+    static func removeCacheData(){
+        UserDefaults.standard.removeObject(forKey: Constant.LIST_MOVIE_DATA)
     }
 }
 
