@@ -17,16 +17,12 @@ class MovieDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpUI()
-        tableView.delegate = MovieDetailViewModel.movieDetailViewModel
-        tableView.dataSource = MovieDetailViewModel.movieDetailViewModel
-        tableView.estimatedRowHeight = UITableView.automaticDimension
-        tableView.register(UINib(nibName: "DetailHeaderCell", bundle: nil), forCellReuseIdentifier: "DetailHeaderCell")
-        tableView.register(UINib(nibName: "DetailContentCell", bundle: nil), forCellReuseIdentifier: "DetailContentCell")
-        MovieDetailViewModel.movieDetailViewModel.fetchDetail(aMovieID: (Int64(movieModel?.id ?? 0)))
+        self.configTableView()
         MovieDetailViewModel.movieDetailViewModel.reloadTableViewBlock = {
             self.tableView.reloadData()
         }
-        // Do any additional setup after loading the view.
+        
+        MovieDetailViewModel.movieDetailViewModel.fetchDetail(aMovieID: (Int64(movieModel?.id ?? 0)))
     }
     
     func setUpUI(){
@@ -36,6 +32,14 @@ class MovieDetailViewController: UIViewController {
         self.navigationController?.navigationBar.barTintColor = UIColor(rgb: 0x273446)
         self.navigationItem.title = movieModel?.title;
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+    }
+    
+    func configTableView(){
+        tableView.delegate = MovieDetailViewModel.movieDetailViewModel
+        tableView.dataSource = MovieDetailViewModel.movieDetailViewModel
+        tableView.estimatedRowHeight = UITableView.automaticDimension
+        tableView.register(UINib(nibName: "DetailHeaderCell", bundle: nil), forCellReuseIdentifier: "DetailHeaderCell")
+        tableView.register(UINib(nibName: "DetailContentCell", bundle: nil), forCellReuseIdentifier: "DetailContentCell")
     }
     
     @objc func backAction(){

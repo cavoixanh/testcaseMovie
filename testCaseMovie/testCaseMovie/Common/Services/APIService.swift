@@ -61,7 +61,6 @@ class APIService {
                         }
                     case .failure(let error):
                         if error._code == NSURLErrorTimedOut {
-                            //forcedToast(ErrorTimeoutMessageLocalization)
                             return
                         }
                         
@@ -97,7 +96,7 @@ class APIService {
                         let decoder = JSONDecoder()
                         do{
                             let movieDetail = try decoder.decode(MovideDetailModel.self, from: jsonData)
-                            self.removeCacheDetailData(idMovie: movieDetail.id!)
+                            self.removeCacheDetailData(idMovie: movieDetail.id ?? 0)
                             self.saveDataDetailMovieToLocal(model: movieDetail)
                             observer.onNext(movieDetail)
                         }catch{
@@ -107,7 +106,6 @@ class APIService {
                         observer.onCompleted()
                     case .failure(let error):
                         if error._code == NSURLErrorTimedOut {
-                            //                            forcedToast(ErrorTimeoutMessageLocalization)
                             return
                         }
                         
@@ -161,7 +159,7 @@ class APIService {
         
         return Observable.create{ observer in
             
-            if let arr = UserDefaults.standard.df.fetch(forKey: Constant.LIST_MOVIE_DATA, type: [MovideDetailModel].self) {
+            if let arr = UserDefaults.standard.df.fetch(forKey: Constant.DETAIL_MOVIE_DATA, type: [MovideDetailModel].self) {
                 if let found = arr.first(where: { (movieDetailModel) -> Bool in
                     return movieDetailModel.id == idMovie
                 }) {
@@ -183,7 +181,7 @@ class APIService {
     }
     
     static func removeCacheDetailData(idMovie: Int64) {
-        if let arr = UserDefaults.standard.df.fetch(forKey: Constant.LIST_MOVIE_DATA, type: [MovideDetailModel].self) {
+        if let arr = UserDefaults.standard.df.fetch(forKey: Constant.DETAIL_MOVIE_DATA, type: [MovideDetailModel].self) {
                 if let _ = arr.first(where: { (movieDetailModel) -> Bool in
                     return movieDetailModel.id == idMovie
                 }) {
@@ -202,7 +200,6 @@ class AlamofireManager{
         
         let customManager = Alamofire.SessionManager.default
         customManager.session.configuration.timeoutIntervalForRequest = TimeInterval(Constant.Request_Timeout)
-        
         //Bypass SSL Cert error
         //remove this in production for security risk
         //start
@@ -233,3 +230,25 @@ class AlamofireManager{
     }
 }
 
+extension Alamofire.SessionManager{
+    @discardableResult
+    open func requestWithoutCache(
+        _ url: URLConvertible,
+        method: HTTPMethod = .get,
+        parameters: Parameters? = nil,
+        encoding: ParameterEncoding = URLEncoding.default,
+        headers: HTTPHeaders? = nil)// also you can add URLRequest.CachePolicy here as parameter
+        -> DataRequest
+    {
+        do {
+            var urlRequest = try URLRequest(url: url, method: method, headers: headers)
+            urlRequest.cachePolicy = .reloadIgnoringCacheData // <<== Cache disabled
+            let encodedURLRequest = try encoding.encode(urlRequest, with: parameters)
+            return request(encodedURLRequest)
+        } catch {
+            // TODO: find a better way to handle error
+            print(error)
+            return request(URLRequest(url: URL(string: "http://example.com/wrong_request")!))
+        }
+    }
+}

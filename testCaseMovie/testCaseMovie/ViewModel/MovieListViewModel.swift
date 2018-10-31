@@ -60,6 +60,11 @@ class MovieListViewModel: NSObject, UITableViewDelegate, UITableViewDataSource {
                         self.reloadTableViewBlock!()
                     }
                     
+                    if !Reachability.isConnectedToNetwork(){
+                        self.alertNetWork()
+                        return;
+                    }
+                    
                     APIService.fetchMovieList(page: self.page).subscribe(
                         onNext: {(dataModel) in
                             

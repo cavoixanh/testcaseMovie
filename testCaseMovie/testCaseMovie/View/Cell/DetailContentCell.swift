@@ -41,11 +41,11 @@ class DetailContentCell: UITableViewCell {
             break;
         case 6:
             titleString = "Production Budget"
-            contenString = DetailContentCellViewModel.detailContentCellViewModel.formatMoney(money: aMovieDetail.budget!)
+            contenString = DetailContentCellViewModel.detailContentCellViewModel.formatMoney(money: aMovieDetail.budget)
             break;
         case 7:
             titleString = "Revenue"
-            contenString = DetailContentCellViewModel.detailContentCellViewModel.formatMoney(money: aMovieDetail.revenue!)
+            contenString = DetailContentCellViewModel.detailContentCellViewModel.formatMoney(money: aMovieDetail.revenue)
             break;
         case 8:
             titleString = "Languages"

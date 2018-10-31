@@ -16,7 +16,8 @@ class DetailContentCellViewModel {
     func getGenres()-> String {
         
         var genreString = ""
-        for model in self.detailModel.genres! {
+        
+        for model in (self.detailModel.genres ?? []) {
             genreString = genreString + " " + (model.name ?? "") + ","
         }
         
@@ -25,17 +26,20 @@ class DetailContentCellViewModel {
     
     func getCompanies() -> String {
         var companiesString = ""
-        for model in self.detailModel.production_companies! {
+        for model in (self.detailModel.production_companies ?? []) {
             companiesString = companiesString + " " + (model.name ?? "") + ","
         }
         return String(companiesString.dropFirst().dropLast())
     }
     
-    func formatMoney(money: Float64) -> String {
+    func formatMoney(money: Float64?) -> String {
+        guard let money = money else {
+            return ""
+        }
         let formatter = NumberFormatter()
         formatter.locale = Locale.current
         formatter.numberStyle = .currency
-        if let formattedAmount = formatter.string(from: money as NSNumber) {
+        if let formattedAmount = formatter.string(from: money as! NSNumber) {
             return "\(formattedAmount)"
         }
         

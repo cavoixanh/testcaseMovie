@@ -35,6 +35,7 @@
 		84D7C97721895B1E009FEF31 /* GenreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7C97621895B1E009FEF31 /* GenreModel.swift */; };
 		84D7C97921895C00009FEF31 /* CompanyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7C97821895C00009FEF31 /* CompanyModel.swift */; };
 		84D7C97B21898348009FEF31 /* DetailContentCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7C97A21898348009FEF31 /* DetailContentCellViewModel.swift */; };
+		84D7C97D2189AFBB009FEF31 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7C97C2189AFBB009FEF31 /* Reachability.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +70,7 @@
 		84D7C97621895B1E009FEF31 /* GenreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreModel.swift; sourceTree = "<group>"; };
 		84D7C97821895C00009FEF31 /* CompanyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyModel.swift; sourceTree = "<group>"; };
 		84D7C97A21898348009FEF31 /* DetailContentCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailContentCellViewModel.swift; sourceTree = "<group>"; };
+		84D7C97C2189AFBB009FEF31 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		D321E13FD0967F4BCB21123A /* Pods-testCaseMovie.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-testCaseMovie.debug.xcconfig"; path = "Pods/Target Support Files/Pods-testCaseMovie/Pods-testCaseMovie.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -143,6 +145,7 @@
 				841FC4CB2188172000889135 /* APIService.swift */,
 				841FC4CD218817D300889135 /* Endpoints.swift */,
 				841FC4CF218825F000889135 /* Constant.swift */,
+				84D7C97C2189AFBB009FEF31 /* Reachability.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -387,6 +390,7 @@
 				841FC4DD21883C9F00889135 /* MovieListViewController.swift in Sources */,
 				8438D3E62188C48000A4F1C9 /* DetailHeaderCell.swift in Sources */,
 				841FC4CE218817D300889135 /* Endpoints.swift in Sources */,
+				84D7C97D2189AFBB009FEF31 /* Reachability.swift in Sources */,
 				841FC4B6218813E500889135 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

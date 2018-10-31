@@ -20,30 +20,41 @@ class MovieDetailViewModel: NSObject, UITableViewDelegate, UITableViewDataSource
     
     func fetchDetail(aMovieID: Int64){
         
-        APIService.fetchMovieDetail(movieID: aMovieID).subscribe(
-            onNext: {(dataModel) in
-                self.movieDetailModel = dataModel
-                if self.reloadTableViewBlock != nil {
-                    self.reloadTableViewBlock!()
-                }
-        },
-            onError: {(error) in
-                let _ = APIService.fetchMovieDetail(movieID: aMovieID).subscribe(onNext: { (dataModel) in
+        if !Reachability.isConnectedToNetwork() {
+            APIService.getDataDetailMovieFromLocal(idMovie: aMovieID).subscribe(
+                onNext: {(dataModel) in
+                    if dataModel != nil{
+                        self.movieDetailModel = dataModel
+                        if self.reloadTableViewBlock != nil {
+                            self.reloadTableViewBlock!()
+                        }
+                    }
+                    
+                    self.alertNetWork()
+            },
+                onError: {(error) in
+                    
+            },
+                onCompleted: {
+                    
+            }).disposed(by: self.disposeBag)
+        }else{
+            APIService.fetchMovieDetail(movieID: aMovieID).subscribe(
+                onNext: {(dataModel) in
                     self.movieDetailModel = dataModel
                     if self.reloadTableViewBlock != nil {
                         self.reloadTableViewBlock!()
                     }
-                }, onError: {(error) in
+            },
+                onError: {(error) in
+                    self.alertNetWork()
+            },
+                onCompleted: {
                     
-                    }, onCompleted: {
-                        
-                }, onDisposed: {
-                    
-                })
-        },
-            onCompleted: {
-                
-        }).disposed(by: self.disposeBag)
+            }).disposed(by: self.disposeBag)
+        }
+        
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -82,8 +93,11 @@ class MovieDetailViewModel: NSObject, UITableViewDelegate, UITableViewDataSource
      
         }))
         alert.addAction(UIAlertAction(title: "Try again", style: .default, handler: { action in
-            self.fetchDetail(aMovieID: (self.movieDetailModel?.id)!)
+            if self.movieDetailModel != nil {
+               self.fetchDetail(aMovieID: (self.movieDetailModel?.id)!)
+            }
         }))
+        
         let window :UIWindow = UIApplication.shared.keyWindow!
         window.rootViewController!.present(alert, animated: true, completion: nil)
      }
