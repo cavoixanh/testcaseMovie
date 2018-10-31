@@ -12,6 +12,7 @@ struct API {
     static let baseUrl = "https://api.themoviedb.org"
     static let apiKey = "14bc774791d9d20b3a138bb6e26e2579"
     static let imageThumnbUrl = "https://image.tmdb.org/t/p/w200"
+    static let imageBackdropUrl = "https://image.tmdb.org/t/p/w500"
 }
 
 protocol Endpoint {
@@ -38,7 +39,7 @@ enum Endpoints {
         case fetch
         public var path: String {
             switch self {
-            case .fetch: return "/movie"
+            case .fetch: return "/3/movie"
             }
         }
         public var url: String {

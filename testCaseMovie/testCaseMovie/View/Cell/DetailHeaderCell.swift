@@ -10,15 +10,25 @@ import UIKit
 
 class DetailHeaderCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
+    @IBOutlet var headerImageView : UIImageView!
+    @IBOutlet var avatarImageView : UIImageView!
+    @IBOutlet var titleLabel      : UILabel!
+    @IBOutlet var subTitleLabel   : UILabel!
     
+    
+    func setMovieDetail(aMovieDetail: MovideDetailModel){
+        
+        self.titleLabel.text = aMovieDetail.title
+        self.subTitleLabel.text = aMovieDetail.tagline
+        
+        let backDropPath = API.imageThumnbUrl + (aMovieDetail.backdrop_path ?? "")
+        APIService.shared.requestImage(path: backDropPath) { (image) in
+            self.headerImageView.image = image
+        }
+        
+        let posterPath = API.imageThumnbUrl + (aMovieDetail.poster_path ?? "")
+        APIService.shared.requestImage(path: posterPath) { (image) in
+            self.avatarImageView.image = image
+        }
+    }
 }

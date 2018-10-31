@@ -12,4 +12,5 @@ class Constant: NSObject {
 
     static let Request_Timeout = 10
     static let LIST_MOVIE_DATA = "LIST_MOVIE_DATA"
+    static let DETAIL_MOVIE_DATA = "DETAIL_MOVIE_DATA"
 }

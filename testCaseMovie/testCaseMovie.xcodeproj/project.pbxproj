@@ -31,6 +31,10 @@
 		8438D3E72188C48000A4F1C9 /* DetailHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8438D3E52188C48000A4F1C9 /* DetailHeaderCell.xib */; };
 		8438D3EA2188C49300A4F1C9 /* DetailContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8438D3E82188C49300A4F1C9 /* DetailContentCell.swift */; };
 		8438D3EB2188C49300A4F1C9 /* DetailContentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8438D3E92188C49300A4F1C9 /* DetailContentCell.xib */; };
+		84D7C97521895AFC009FEF31 /* MovideDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7C97421895AFC009FEF31 /* MovideDetailModel.swift */; };
+		84D7C97721895B1E009FEF31 /* GenreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7C97621895B1E009FEF31 /* GenreModel.swift */; };
+		84D7C97921895C00009FEF31 /* CompanyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7C97821895C00009FEF31 /* CompanyModel.swift */; };
+		84D7C97B21898348009FEF31 /* DetailContentCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7C97A21898348009FEF31 /* DetailContentCellViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +65,10 @@
 		8438D3E52188C48000A4F1C9 /* DetailHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailHeaderCell.xib; sourceTree = "<group>"; };
 		8438D3E82188C49300A4F1C9 /* DetailContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailContentCell.swift; sourceTree = "<group>"; };
 		8438D3E92188C49300A4F1C9 /* DetailContentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailContentCell.xib; sourceTree = "<group>"; };
+		84D7C97421895AFC009FEF31 /* MovideDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovideDetailModel.swift; sourceTree = "<group>"; };
+		84D7C97621895B1E009FEF31 /* GenreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreModel.swift; sourceTree = "<group>"; };
+		84D7C97821895C00009FEF31 /* CompanyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyModel.swift; sourceTree = "<group>"; };
+		84D7C97A21898348009FEF31 /* DetailContentCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailContentCellViewModel.swift; sourceTree = "<group>"; };
 		D321E13FD0967F4BCB21123A /* Pods-testCaseMovie.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-testCaseMovie.debug.xcconfig"; path = "Pods/Target Support Files/Pods-testCaseMovie/Pods-testCaseMovie.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -142,6 +150,7 @@
 		841FC4D12188349C00889135 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				84D7C97321895AD5009FEF31 /* MovieDetail */,
 				841FC4D2218834A900889135 /* MovieList */,
 			);
 			path = Model;
@@ -161,6 +170,7 @@
 			children = (
 				841FC4D921883C6500889135 /* MovieListViewModel.swift */,
 				8438D3E22188B91400A4F1C9 /* MovieDetailViewModel.swift */,
+				84D7C97A21898348009FEF31 /* DetailContentCellViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -196,6 +206,16 @@
 				8438D3E92188C49300A4F1C9 /* DetailContentCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		84D7C97321895AD5009FEF31 /* MovieDetail */ = {
+			isa = PBXGroup;
+			children = (
+				84D7C97421895AFC009FEF31 /* MovideDetailModel.swift */,
+				84D7C97621895B1E009FEF31 /* GenreModel.swift */,
+				84D7C97821895C00009FEF31 /* CompanyModel.swift */,
+			);
+			path = MovieDetail;
 			sourceTree = "<group>";
 		};
 		CE644A58674449EF5E4DBD16 /* Frameworks */ = {
@@ -354,11 +374,15 @@
 				8438D3EA2188C49300A4F1C9 /* DetailContentCell.swift in Sources */,
 				841FC4D4218834D100889135 /* MovieListModel.swift in Sources */,
 				841FC4B8218813E500889135 /* ViewController.swift in Sources */,
+				84D7C97921895C00009FEF31 /* CompanyModel.swift in Sources */,
 				8438D3E02188B8D300A4F1C9 /* MovieDetailViewController.swift in Sources */,
 				8438D3E32188B91400A4F1C9 /* MovieDetailViewModel.swift in Sources */,
+				84D7C97721895B1E009FEF31 /* GenreModel.swift in Sources */,
+				84D7C97B21898348009FEF31 /* DetailContentCellViewModel.swift in Sources */,
 				841FC4DA21883C6500889135 /* MovieListViewModel.swift in Sources */,
 				841FC4CC2188172000889135 /* APIService.swift in Sources */,
 				841FC4E121883DD400889135 /* Extensions.swift in Sources */,
+				84D7C97521895AFC009FEF31 /* MovideDetailModel.swift in Sources */,
 				841FC4D0218825F000889135 /* Constant.swift in Sources */,
 				841FC4DD21883C9F00889135 /* MovieListViewController.swift in Sources */,
 				8438D3E62188C48000A4F1C9 /* DetailHeaderCell.swift in Sources */,

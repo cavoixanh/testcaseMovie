@@ -22,19 +22,4 @@ struct MovieModel : Codable {
     let adult : Bool
     let overview : String?
     let release_date : String?
-    
-    enum CodingKeys : String, CodingKey {
-        case title = "title"
-        case poster_path = "poster_path"
-        case original_language = "original_language"
-        case original_title = "original_title"
-        case backdrop_path = "backdrop_path"
-        case overview = "overview"
-        case release_date = "release_date"
-        case vote_count
-        case id
-        case video
-        case vote_average
-        case adult
-    }
 }

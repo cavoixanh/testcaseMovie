@@ -39,7 +39,7 @@ class APIService {
             
             let requestURL:String = Endpoints.MovieList.fetch.url + "&page=\(page)"
             
-            let _ = AlamofireManager.manager.request(requestURL, method: .put, parameters:[:], encoding: JSONEncoding.default, headers:headers)
+            let _ = AlamofireManager.manager.request(requestURL, method: .get, parameters:[:], encoding: JSONEncoding.default, headers:headers)
                 .responseJSON{response in
                     
                     //checkRequestCode("CustomerProfile - ChangeProfile",response)
@@ -77,7 +77,7 @@ class APIService {
         }
     }
     
-    static func fetchMovieDetail(movieID:Int32) -> Observable<MovieListModel> {
+    static func fetchMovieDetail(movieID:Int32) -> Observable<MovideDetailModel> {
         return Observable.create{ observer in
             
             let headers = [
@@ -86,24 +86,27 @@ class APIService {
             
             let requestURL:String = Endpoints.MovieDetail.fetch.url + "/\(movieID)" + "?api_key=\(API.apiKey)"
             
-            let _ = AlamofireManager.manager.request(requestURL, method: .put, parameters:[:], encoding: JSONEncoding.default, headers:headers)
+            let _ = AlamofireManager.manager.request(requestURL, method: .get, parameters:[:], encoding: URLEncoding.default, headers:headers)
                 .responseJSON{response in
                     
                     //checkRequestCode("CustomerProfile - ChangeProfile",response)
                     
                     switch response.result {
                     case .success:
-                        print(response.result.value!)
+                        
                         let json = JSON(response.result.value!)
                         
                         let jsonData = "\(json)".data(using: .utf8)!
                         let decoder = JSONDecoder()
-                        let movieList = try! decoder.decode(MovieListModel.self, from: jsonData)
+                        do{
+                            let movieDetail = try decoder.decode(MovideDetailModel.self, from: jsonData)
+                            self.removeCacheDetailData(idMovie: movieDetail.id!)
+                            self.saveDataDetailMovieToLocal(model: movieDetail)
+                            observer.onNext(movieDetail)
+                        }catch{
+                            print(response.result.value!)
+                        }
                         
-                        //let userdefault = UserDefaults.standard
-                        //userdefault.set(json.rawString(), forKey: "CustomerProfile")
-                        
-                        observer.onNext(movieList)
                         observer.onCompleted()
                     case .failure(let error):
                         if error._code == NSURLErrorTimedOut {
@@ -146,8 +149,53 @@ class APIService {
         }
     }
     
+    static func saveDataDetailMovieToLocal(model:MovideDetailModel){
+        if let arr = UserDefaults.standard.df.fetch(forKey: Constant.DETAIL_MOVIE_DATA, type: [MovideDetailModel].self) {
+            var tempArray = arr
+            tempArray.append(model)
+            UserDefaults.standard.df.store(tempArray, forKey: Constant.DETAIL_MOVIE_DATA)
+        }else{
+            UserDefaults.standard.df.store(model, forKey: Constant.DETAIL_MOVIE_DATA)
+        }
+    }
+    
+    static func getDataDetailMovieFromLocal(idMovie:Int64) -> Observable<MovideDetailModel?> {
+        
+        return Observable.create{ observer in
+            
+            if let arr = UserDefaults.standard.df.fetch(forKey: Constant.LIST_MOVIE_DATA, type: [MovideDetailModel].self) {
+                if let found = arr.first(where: { (movieDetailModel) -> Bool in
+                    return movieDetailModel.id == idMovie
+                }) {
+                    observer.onNext(found)
+                }
+                observer.onNext(nil)
+            }else{
+                observer.onNext(nil)
+            }
+            observer.onCompleted()
+            return Disposables.create(with: {
+                
+            })
+        }
+    }
+    
     static func removeCacheData(){
         UserDefaults.standard.removeObject(forKey: Constant.LIST_MOVIE_DATA)
+    }
+    
+    static func removeCacheDetailData(idMovie: Int64) {
+        if let arr = UserDefaults.standard.df.fetch(forKey: Constant.LIST_MOVIE_DATA, type: [MovideDetailModel].self) {
+                if let _ = arr.first(where: { (movieDetailModel) -> Bool in
+                    return movieDetailModel.id == idMovie
+                }) {
+                    if let index = arr.index(where: { $0.id == idMovie }) {
+                        var tempArray = arr
+                        tempArray.remove(at: index)
+                        UserDefaults.standard.df.store(tempArray, forKey: Constant.DETAIL_MOVIE_DATA)
+                    }
+                }
+        }
     }
 }
 

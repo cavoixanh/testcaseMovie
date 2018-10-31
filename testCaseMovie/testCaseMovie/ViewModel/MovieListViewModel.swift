@@ -21,6 +21,7 @@ class MovieListViewModel: NSObject, UITableViewDelegate, UITableViewDataSource {
     var page : Int = 1
     var isOfflineMode = true
     
+    static let movieListViewModel = MovieListViewModel()
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return movieModelArray.count ;
@@ -51,7 +52,7 @@ class MovieListViewModel: NSObject, UITableViewDelegate, UITableViewDataSource {
     }
     
     
-    static let movieListViewModel = MovieListViewModel()
+    
     
     func fetchData(){
         if isOfflineMode {
