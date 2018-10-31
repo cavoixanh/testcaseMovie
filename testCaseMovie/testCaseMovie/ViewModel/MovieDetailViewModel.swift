@@ -28,7 +28,6 @@ class MovieDetailViewModel: NSObject, UITableViewDelegate, UITableViewDataSource
                 }
         },
             onError: {(error) in
-            
                 let _ = APIService.fetchMovieDetail(movieID: aMovieID).subscribe(onNext: { (dataModel) in
                     self.movieDetailModel = dataModel
                     if self.reloadTableViewBlock != nil {

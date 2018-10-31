@@ -63,9 +63,10 @@ class APIService {
                         }
                     case .failure(let error):
                         if error._code == NSURLErrorTimedOut {
-                            //                            forcedToast(ErrorTimeoutMessageLocalization)
+                            //forcedToast(ErrorTimeoutMessageLocalization)
                             return
                         }
+                        
                         print(error)
                         observer.onError(error)
                     }
@@ -113,6 +114,15 @@ class APIService {
                             //                            forcedToast(ErrorTimeoutMessageLocalization)
                             return
                         }
+                        
+                        let alert = UIAlertController(title: "Warning", message: "Lost network connection", preferredStyle: UIAlertController.Style.alert)
+                            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+                                
+                            }))
+                            let window :UIWindow = UIApplication.shared.keyWindow!
+                            window.rootViewController!.present(alert, animated: true, completion: nil)
+                        
+                        
                         print(error)
                         observer.onError(error)
                     }
@@ -204,7 +214,7 @@ class AlamofireManager{
         
         let customManager = Alamofire.SessionManager.default
         customManager.session.configuration.timeoutIntervalForRequest = TimeInterval(Constant.Request_Timeout)
-        
+        customManager.session.configuration.urlCache = nil
         
         //Bypass SSL Cert error
         //remove this in production for security risk

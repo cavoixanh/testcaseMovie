@@ -20,6 +20,8 @@ class DetailHeaderCell: UITableViewCell {
         
         self.titleLabel.text = aMovieDetail.title
         self.subTitleLabel.text = aMovieDetail.tagline
+        self.headerImageView.image = nil
+        self.avatarImageView.image = nil
         
         let backDropPath = API.imageThumnbUrl + (aMovieDetail.backdrop_path ?? "")
         APIService.shared.requestImage(path: backDropPath) { (image) in

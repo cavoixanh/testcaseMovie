@@ -51,9 +51,6 @@ class MovieListViewModel: NSObject, UITableViewDelegate, UITableViewDataSource {
         
     }
     
-    
-    
-    
     func fetchData(){
         if isOfflineMode {
             APIService.getDataListMovieFromLocal().subscribe(
@@ -78,14 +75,14 @@ class MovieListViewModel: NSObject, UITableViewDelegate, UITableViewDataSource {
                     },
                         onError: {(error) in
                             self.isOfflineMode = true
-                            //self.state.value = .networkError
+                            self.alertNetWork()
                     },
                         onCompleted: {
                             
                     }).disposed(by: self.disposeBag)
             },
                 onError: {(error) in
-                    //self.state.value = .networkError
+                    
             },
                 onCompleted: {
                     
@@ -102,7 +99,7 @@ class MovieListViewModel: NSObject, UITableViewDelegate, UITableViewDataSource {
             },
                 onError: {(error) in
                     self.isOfflineMode = true
-                    //self.state.value = .networkError
+                    self.alertNetWork()
             },
                 onCompleted: {
                     
@@ -111,5 +108,17 @@ class MovieListViewModel: NSObject, UITableViewDelegate, UITableViewDataSource {
         
         
         
+    }
+    
+    func alertNetWork(){
+        let alert = UIAlertController(title: "Warning", message: "Lost network connection", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+            
+        }))
+        alert.addAction(UIAlertAction(title: "Try again", style: .default, handler: { action in
+            self.fetchData()
+        }))
+        let window :UIWindow = UIApplication.shared.keyWindow!
+        window.rootViewController!.present(alert, animated: true, completion: nil)
     }
 }
