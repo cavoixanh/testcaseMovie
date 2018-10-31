@@ -211,9 +211,9 @@
 		84D7C97321895AD5009FEF31 /* MovieDetail */ = {
 			isa = PBXGroup;
 			children = (
-				84D7C97421895AFC009FEF31 /* MovideDetailModel.swift */,
-				84D7C97621895B1E009FEF31 /* GenreModel.swift */,
 				84D7C97821895C00009FEF31 /* CompanyModel.swift */,
+				84D7C97621895B1E009FEF31 /* GenreModel.swift */,
+				84D7C97421895AFC009FEF31 /* MovideDetailModel.swift */,
 			);
 			path = MovieDetail;
 			sourceTree = "<group>";

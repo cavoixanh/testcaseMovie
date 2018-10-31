@@ -42,8 +42,6 @@ class APIService {
             let _ = AlamofireManager.manager.request(requestURL, method: .get, parameters:[:], encoding: JSONEncoding.default, headers:headers)
                 .responseJSON{response in
                     
-                    //checkRequestCode("CustomerProfile - ChangeProfile",response)
-                    
                     switch response.result {
                     case .success:
                         let json = JSON(response.result.value!)
@@ -89,8 +87,6 @@ class APIService {
             
             let _ = AlamofireManager.manager.request(requestURL, method: .get, parameters:[:], encoding: URLEncoding.default, headers:headers)
                 .responseJSON{response in
-                    
-                    //checkRequestCode("CustomerProfile - ChangeProfile",response)
                     
                     switch response.result {
                     case .success:
@@ -206,7 +202,6 @@ class AlamofireManager{
         
         let customManager = Alamofire.SessionManager.default
         customManager.session.configuration.timeoutIntervalForRequest = TimeInterval(Constant.Request_Timeout)
-        customManager.session.configuration.urlCache = nil
         
         //Bypass SSL Cert error
         //remove this in production for security risk
