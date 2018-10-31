@@ -78,7 +78,7 @@ class APIService {
         }
     }
     
-    static func fetchMovieDetail(movieID:Int32) -> Observable<MovideDetailModel> {
+    static func fetchMovieDetail(movieID:Int64) -> Observable<MovideDetailModel> {
         return Observable.create{ observer in
             
             let headers = [
@@ -114,14 +114,6 @@ class APIService {
                             //                            forcedToast(ErrorTimeoutMessageLocalization)
                             return
                         }
-                        
-                        let alert = UIAlertController(title: "Warning", message: "Lost network connection", preferredStyle: UIAlertController.Style.alert)
-                            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
-                                
-                            }))
-                            let window :UIWindow = UIApplication.shared.keyWindow!
-                            window.rootViewController!.present(alert, animated: true, completion: nil)
-                        
                         
                         print(error)
                         observer.onError(error)

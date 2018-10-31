@@ -18,7 +18,7 @@ class MovieDetailViewModel: NSObject, UITableViewDelegate, UITableViewDataSource
     
     static let movieDetailViewModel = MovieDetailViewModel()
     
-    func fetchDetail(aMovieID: Int32){
+    func fetchDetail(aMovieID: Int64){
         
         APIService.fetchMovieDetail(movieID: aMovieID).subscribe(
             onNext: {(dataModel) in
@@ -75,4 +75,16 @@ class MovieDetailViewModel: NSObject, UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
+    
+    func alertNetWork(){
+        let alert = UIAlertController(title: "Warning", message: "Lost network connection", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+     
+        }))
+        alert.addAction(UIAlertAction(title: "Try again", style: .default, handler: { action in
+            self.fetchDetail(aMovieID: (self.movieDetailModel?.id)!)
+        }))
+        let window :UIWindow = UIApplication.shared.keyWindow!
+        window.rootViewController!.present(alert, animated: true, completion: nil)
+     }
 }

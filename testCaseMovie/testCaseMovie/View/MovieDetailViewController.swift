@@ -22,7 +22,7 @@ class MovieDetailViewController: UIViewController {
         tableView.estimatedRowHeight = UITableView.automaticDimension
         tableView.register(UINib(nibName: "DetailHeaderCell", bundle: nil), forCellReuseIdentifier: "DetailHeaderCell")
         tableView.register(UINib(nibName: "DetailContentCell", bundle: nil), forCellReuseIdentifier: "DetailContentCell")
-        MovieDetailViewModel.movieDetailViewModel.fetchDetail(aMovieID: Int32(movieModel?.id ?? 0))
+        MovieDetailViewModel.movieDetailViewModel.fetchDetail(aMovieID: (Int64(movieModel?.id ?? 0)))
         MovieDetailViewModel.movieDetailViewModel.reloadTableViewBlock = {
             self.tableView.reloadData()
         }

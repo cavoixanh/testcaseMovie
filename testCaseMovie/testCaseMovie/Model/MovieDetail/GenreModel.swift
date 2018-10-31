@@ -9,6 +9,5 @@
 import UIKit
 
 struct GenreModel: Codable {
-    let id : Int?
     let name: String?
 }
