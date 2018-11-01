@@ -156,7 +156,7 @@ class APIService {
             tempArray.append(model)
             UserDefaults.standard.df.store(tempArray, forKey: Constant.DETAIL_MOVIE_DATA)
         }else{
-            UserDefaults.standard.df.store(model, forKey: Constant.DETAIL_MOVIE_DATA)
+            UserDefaults.standard.df.store([model], forKey: Constant.DETAIL_MOVIE_DATA)
         }
     }
     
