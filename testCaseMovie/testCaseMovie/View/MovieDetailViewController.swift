@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import MBProgressHUD
 class MovieDetailViewController: UIViewController {
 
     @IBOutlet var tableView: UITableView!

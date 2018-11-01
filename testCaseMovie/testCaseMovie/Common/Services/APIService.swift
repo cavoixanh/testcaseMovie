@@ -83,7 +83,7 @@ class APIService {
                 ]
             
             let requestURL:String = Endpoints.MovieDetail.fetch.url + "/\(movieID)" + "?api_key=\(API.apiKey)"
-            
+            print("requestURL = \(requestURL)")
             let _ = AlamofireManager.manager.request(requestURL, method: .get, parameters:[:], encoding: URLEncoding.default, headers:headers)
                 .responseJSON{response in
                     
@@ -91,7 +91,12 @@ class APIService {
                     case .success:
                         
                         let json = JSON(response.result.value!)
-                        
+                        if let error = json["status_code"].int, error == 34 {
+                            AppDelegate.appDelegate().showAlertWithMsg(mes: json["status_message"].string ?? "")
+                            let errorTemp = NSError(domain:"", code:34, userInfo:nil)
+                            observer.onError(errorTemp)
+                            return;
+                        }
                         let jsonData = "\(json)".data(using: .utf8)!
                         let decoder = JSONDecoder()
                         do{
@@ -200,9 +205,6 @@ class AlamofireManager{
         
         let customManager = Alamofire.SessionManager.default
         customManager.session.configuration.timeoutIntervalForRequest = TimeInterval(Constant.Request_Timeout)
-        //Bypass SSL Cert error
-        //remove this in production for security risk
-        //start
         customManager.delegate.sessionDidReceiveChallenge = { session, challenge in
             var disposition: URLSession.AuthChallengeDisposition = .performDefaultHandling
             var credential: URLCredential?
@@ -224,31 +226,7 @@ class AlamofireManager{
             
             return (disposition, credential)
         }
-        //end
         
         return customManager
-    }
-}
-
-extension Alamofire.SessionManager{
-    @discardableResult
-    open func requestWithoutCache(
-        _ url: URLConvertible,
-        method: HTTPMethod = .get,
-        parameters: Parameters? = nil,
-        encoding: ParameterEncoding = URLEncoding.default,
-        headers: HTTPHeaders? = nil)// also you can add URLRequest.CachePolicy here as parameter
-        -> DataRequest
-    {
-        do {
-            var urlRequest = try URLRequest(url: url, method: method, headers: headers)
-            urlRequest.cachePolicy = .reloadIgnoringCacheData // <<== Cache disabled
-            let encodedURLRequest = try encoding.encode(urlRequest, with: parameters)
-            return request(encodedURLRequest)
-        } catch {
-            // TODO: find a better way to handle error
-            print(error)
-            return request(URLRequest(url: URL(string: "http://example.com/wrong_request")!))
-        }
     }
 }

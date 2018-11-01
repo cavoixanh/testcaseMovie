@@ -21,5 +21,6 @@ struct MovideDetailModel: Codable {
     let poster_path: String?
     let release_date : String?
     let id: Int64?
+    let runtime: Int64?
     
 }

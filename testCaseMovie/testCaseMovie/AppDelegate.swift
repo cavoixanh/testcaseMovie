@@ -7,12 +7,12 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -45,7 +45,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
+    static func appDelegate () -> AppDelegate
+    {
+        return UIApplication.shared.delegate as! AppDelegate
+    }
 
+    func showLoading(){
+        let loadingNotification = MBProgressHUD.showAdded(to: (window?.rootViewController?.view)!, animated: true)
+        loadingNotification.mode = MBProgressHUDMode.indeterminate
+        loadingNotification.label.text = "Loading"
+    }
+    
+    func hideLoading(){
+        MBProgressHUD.hide(for: (window?.rootViewController?.view)!, animated: true)
+    }
+    
+    func showAlertWithMsg(mes: String){
+        let alert = UIAlertController(title: "Warning", message: mes, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+            
+        }))
+        window!.rootViewController!.present(alert, animated: true, completion: nil)
+    }
 
 }
 

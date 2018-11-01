@@ -7,6 +7,7 @@ PODS:
     - ObjectMapper (~> 3.3)
   - Default (2.1.0)
   - Differentiator (3.1.0)
+  - MBProgressHUD (1.1.0)
   - ObjectMapper (3.3.0)
   - RxCocoa (4.3.1):
     - RxSwift (~> 4.0)
@@ -21,6 +22,7 @@ DEPENDENCIES:
   - AlamofireImage (~> 3.1)
   - AlamofireObjectMapper (~> 5.0)
   - Default
+  - MBProgressHUD
   - RxCocoa (~> 4.0)
   - RxDataSources (~> 3.0)
   - RxSwift (~> 4.0)
@@ -33,6 +35,7 @@ SPEC REPOS:
     - AlamofireObjectMapper
     - Default
     - Differentiator
+    - MBProgressHUD
     - ObjectMapper
     - RxCocoa
     - RxDataSources
@@ -45,12 +48,13 @@ SPEC CHECKSUMS:
   AlamofireObjectMapper: 3395e698901d8b0e6f48b7d0c43bd47875325102
   Default: 6b79a17b84763dac64c2e49ea1198c00ce8c2631
   Differentiator: be49ca3408f0ecfc761e4c7763d20c62be01b9ad
+  MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
   ObjectMapper: b612bf8c8e99c4dc0bb6013a51f7c27966ed5da9
   RxCocoa: 78763c7b07d02455598d9fc3c1ad091a28b73635
   RxDataSources: a843bad90c29817f5923ec8163f4af2de084ceb3
   RxSwift: fe0fd770a43acdb7d0a53da411c9b892e69bb6e4
   SwiftyJSON: f57b2b44bc166617372d1c70773591fe9f0f5fd4
 
-PODFILE CHECKSUM: 699ef4b862b1a8bf1928591da45c7c7313de16ee
+PODFILE CHECKSUM: f9ebd4af860743ea9e857bda3827da0bf20ecb54
 
 COCOAPODS: 1.5.3

@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		57AB079B880CCE1082ABDF79 /* Pods_testCaseMovie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4801CAD3F722252C60B61A74 /* Pods_testCaseMovie.framework */; };
 		841FC4B6218813E500889135 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841FC4B5218813E500889135 /* AppDelegate.swift */; };
-		841FC4B8218813E500889135 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841FC4B7218813E500889135 /* ViewController.swift */; };
-		841FC4BB218813E500889135 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 841FC4B9218813E500889135 /* Main.storyboard */; };
 		841FC4BD218813E600889135 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 841FC4BC218813E600889135 /* Assets.xcassets */; };
 		841FC4C0218813E600889135 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 841FC4BE218813E600889135 /* LaunchScreen.storyboard */; };
 		841FC4CC2188172000889135 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841FC4CB2188172000889135 /* APIService.swift */; };
@@ -43,8 +41,6 @@
 		4801CAD3F722252C60B61A74 /* Pods_testCaseMovie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_testCaseMovie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		841FC4B2218813E500889135 /* testCaseMovie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = testCaseMovie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		841FC4B5218813E500889135 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		841FC4B7218813E500889135 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		841FC4BA218813E500889135 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		841FC4BC218813E600889135 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		841FC4BF218813E600889135 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		841FC4C1218813E600889135 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -121,8 +117,6 @@
 				841FC4D12188349C00889135 /* Model */,
 				841FC4C72188146400889135 /* Common */,
 				841FC4B5218813E500889135 /* AppDelegate.swift */,
-				841FC4B7218813E500889135 /* ViewController.swift */,
-				841FC4B9218813E500889135 /* Main.storyboard */,
 				841FC4BC218813E600889135 /* Assets.xcassets */,
 				841FC4BE218813E600889135 /* LaunchScreen.storyboard */,
 				841FC4C1218813E600889135 /* Info.plist */,
@@ -294,7 +288,6 @@
 				841FC4C0218813E600889135 /* LaunchScreen.storyboard in Resources */,
 				841FC4BD218813E600889135 /* Assets.xcassets in Resources */,
 				8438D3EB2188C49300A4F1C9 /* DetailContentCell.xib in Resources */,
-				841FC4BB218813E500889135 /* Main.storyboard in Resources */,
 				841FC4E6218844D000889135 /* MovieListCell.xib in Resources */,
 				841FC4DE21883C9F00889135 /* MovieListViewController.xib in Resources */,
 			);
@@ -317,6 +310,7 @@
 				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/Default/Default.framework",
 				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
+				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
@@ -332,6 +326,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Default.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
@@ -376,7 +371,6 @@
 				841FC4D62188354300889135 /* MovieModel.swift in Sources */,
 				8438D3EA2188C49300A4F1C9 /* DetailContentCell.swift in Sources */,
 				841FC4D4218834D100889135 /* MovieListModel.swift in Sources */,
-				841FC4B8218813E500889135 /* ViewController.swift in Sources */,
 				84D7C97921895C00009FEF31 /* CompanyModel.swift in Sources */,
 				8438D3E02188B8D300A4F1C9 /* MovieDetailViewController.swift in Sources */,
 				8438D3E32188B91400A4F1C9 /* MovieDetailViewModel.swift in Sources */,
@@ -398,14 +392,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		841FC4B9218813E500889135 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				841FC4BA218813E500889135 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		841FC4BE218813E600889135 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

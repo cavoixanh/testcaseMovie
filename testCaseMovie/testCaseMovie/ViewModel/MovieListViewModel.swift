@@ -47,8 +47,6 @@ class MovieListViewModel: NSObject, UITableViewDelegate, UITableViewDataSource {
         if self.didSelectModelBlock != nil {
             self.didSelectModelBlock!(movieModelArray[indexPath.row])
         }
-        
-        
     }
     
     func fetchData(){
@@ -93,6 +91,7 @@ class MovieListViewModel: NSObject, UITableViewDelegate, UITableViewDataSource {
                     
             }).disposed(by: disposeBag)
         }else{
+            
             APIService.fetchMovieList(page: self.page).subscribe(
                 onNext: {(dataModel) in
                     self.movieModelArray += dataModel.results
@@ -110,10 +109,7 @@ class MovieListViewModel: NSObject, UITableViewDelegate, UITableViewDataSource {
                     
             }).disposed(by: self.disposeBag)
         }
-        
-        
-        
-    }
+   }
     
     func alertNetWork(){
         let alert = UIAlertController(title: "Warning", message: "Lost network connection", preferredStyle: UIAlertController.Style.alert)

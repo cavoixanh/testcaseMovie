@@ -39,14 +39,17 @@ class MovieDetailViewModel: NSObject, UITableViewDelegate, UITableViewDataSource
                     
             }).disposed(by: self.disposeBag)
         }else{
+            AppDelegate.appDelegate().showLoading()
             APIService.fetchMovieDetail(movieID: aMovieID).subscribe(
                 onNext: {(dataModel) in
+                    AppDelegate.appDelegate().hideLoading()
                     self.movieDetailModel = dataModel
                     if self.reloadTableViewBlock != nil {
                         self.reloadTableViewBlock!()
                     }
             },
                 onError: {(error) in
+                    AppDelegate.appDelegate().hideLoading()
                     self.alertNetWork()
             },
                 onCompleted: {

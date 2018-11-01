@@ -13,4 +13,5 @@ target 'testCaseMovie' do
   pod 'AlamofireObjectMapper', '~> 5.0'
   pod 'SwiftyJSON', '3.0.0'
   pod 'Default'
+  pod 'MBProgressHUD'
 end
