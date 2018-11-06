@@ -29,6 +29,8 @@
 		8438D3E72188C48000A4F1C9 /* DetailHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8438D3E52188C48000A4F1C9 /* DetailHeaderCell.xib */; };
 		8438D3EA2188C49300A4F1C9 /* DetailContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8438D3E82188C49300A4F1C9 /* DetailContentCell.swift */; };
 		8438D3EB2188C49300A4F1C9 /* DetailContentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8438D3E92188C49300A4F1C9 /* DetailContentCell.xib */; };
+		847745062191353D006B6FD6 /* SwiftWebVC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 847745052191353D006B6FD6 /* SwiftWebVC.framework */; };
+		84774509219158E8006B6FD6 /* libjpush-ios-3.0.9.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84774508219158E8006B6FD6 /* libjpush-ios-3.0.9.a */; };
 		84D7C97521895AFC009FEF31 /* MovideDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7C97421895AFC009FEF31 /* MovideDetailModel.swift */; };
 		84D7C97721895B1E009FEF31 /* GenreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7C97621895B1E009FEF31 /* GenreModel.swift */; };
 		84D7C97921895C00009FEF31 /* CompanyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7C97821895C00009FEF31 /* CompanyModel.swift */; };
@@ -62,6 +64,10 @@
 		8438D3E52188C48000A4F1C9 /* DetailHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailHeaderCell.xib; sourceTree = "<group>"; };
 		8438D3E82188C49300A4F1C9 /* DetailContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailContentCell.swift; sourceTree = "<group>"; };
 		8438D3E92188C49300A4F1C9 /* DetailContentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailContentCell.xib; sourceTree = "<group>"; };
+		847744FE21912E8C006B6FD6 /* testCaseMovie-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "testCaseMovie-Bridging-Header.h"; sourceTree = "<group>"; };
+		847745052191353D006B6FD6 /* SwiftWebVC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftWebVC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8477450721913EE9006B6FD6 /* testCaseMovie.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = testCaseMovie.entitlements; sourceTree = "<group>"; };
+		84774508219158E8006B6FD6 /* libjpush-ios-3.0.9.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libjpush-ios-3.0.9.a"; path = "Pods/JPush/libjpush-ios-3.0.9.a"; sourceTree = "<group>"; };
 		84D7C97421895AFC009FEF31 /* MovideDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovideDetailModel.swift; sourceTree = "<group>"; };
 		84D7C97621895B1E009FEF31 /* GenreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreModel.swift; sourceTree = "<group>"; };
 		84D7C97821895C00009FEF31 /* CompanyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyModel.swift; sourceTree = "<group>"; };
@@ -75,6 +81,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84774509219158E8006B6FD6 /* libjpush-ios-3.0.9.a in Frameworks */,
+				847745062191353D006B6FD6 /* SwiftWebVC.framework in Frameworks */,
 				57AB079B880CCE1082ABDF79 /* Pods_testCaseMovie.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -112,6 +120,7 @@
 		841FC4B4218813E500889135 /* testCaseMovie */ = {
 			isa = PBXGroup;
 			children = (
+				8477450721913EE9006B6FD6 /* testCaseMovie.entitlements */,
 				841FC4D8218835D300889135 /* View */,
 				841FC4D7218835C900889135 /* ViewModel */,
 				841FC4D12188349C00889135 /* Model */,
@@ -120,6 +129,7 @@
 				841FC4BC218813E600889135 /* Assets.xcassets */,
 				841FC4BE218813E600889135 /* LaunchScreen.storyboard */,
 				841FC4C1218813E600889135 /* Info.plist */,
+				847744FE21912E8C006B6FD6 /* testCaseMovie-Bridging-Header.h */,
 			);
 			path = testCaseMovie;
 			sourceTree = "<group>";
@@ -218,6 +228,8 @@
 		CE644A58674449EF5E4DBD16 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				84774508219158E8006B6FD6 /* libjpush-ios-3.0.9.a */,
+				847745052191353D006B6FD6 /* SwiftWebVC.framework */,
 				4801CAD3F722252C60B61A74 /* Pods_testCaseMovie.framework */,
 			);
 			name = Frameworks;
@@ -257,6 +269,12 @@
 				TargetAttributes = {
 					841FC4B1218813E500889135 = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1000;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -305,6 +323,8 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-testCaseMovie/Pods-testCaseMovie-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AVOSCloud/AVOSCloud.framework",
+				"${BUILT_PRODUCTS_DIR}/AVOSCloudIM/AVOSCloudIM.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
@@ -315,12 +335,15 @@
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftWebVC/SwiftWebVC.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AVOSCloud.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AVOSCloudIM.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
@@ -331,6 +354,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftWebVC.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -524,18 +548,26 @@
 			baseConfigurationReference = D321E13FD0967F4BCB21123A /* Pods-testCaseMovie.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = testCaseMovie/testCaseMovie.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = F553Y3MVG6;
+				DEVELOPMENT_TEAM = 6H6MYWF9HX;
 				INFOPLIST_FILE = testCaseMovie/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/JPush",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.app.testCaseMovie;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "testCaseMovie/testCaseMovie-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -544,18 +576,25 @@
 			baseConfigurationReference = 2180A179C4660AF171DE6E17 /* Pods-testCaseMovie.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = testCaseMovie/testCaseMovie.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = F553Y3MVG6;
+				DEVELOPMENT_TEAM = 6H6MYWF9HX;
 				INFOPLIST_FILE = testCaseMovie/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/JPush",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.app.testCaseMovie;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "testCaseMovie/testCaseMovie-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

@@ -39,7 +39,7 @@ class DetailContentCellViewModel {
         let formatter = NumberFormatter()
         formatter.locale = Locale.current
         formatter.numberStyle = .currency
-        if let formattedAmount = formatter.string(from: money as! NSNumber) {
+        if let formattedAmount = formatter.string(from: money as NSNumber) {
             return "\(formattedAmount)"
         }
         

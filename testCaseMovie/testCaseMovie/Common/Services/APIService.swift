@@ -216,7 +216,7 @@ class AlamofireManager{
                 if challenge.previousFailureCount > 0 {
                     disposition = .cancelAuthenticationChallenge
                 } else {
-                    credential = manager.session.configuration.urlCredentialStorage?.defaultCredential(for: challenge.protectionSpace)
+                    credential = self.manager.session.configuration.urlCredentialStorage?.defaultCredential(for: challenge.protectionSpace)
                     
                     if credential != nil {
                         disposition = .useCredential

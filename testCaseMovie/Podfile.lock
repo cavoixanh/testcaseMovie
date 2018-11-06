@@ -5,8 +5,21 @@ PODS:
   - AlamofireObjectMapper (5.1.0):
     - Alamofire (~> 4.1)
     - ObjectMapper (~> 3.3)
+  - AVOSCloud (11.4.5)
+  - AVOSCloudIM (11.4.5):
+    - AVOSCloud (= 11.4.5)
+    - AVOSCloudIM/_ARC (= 11.4.5)
+    - AVOSCloudIM/_NOARC (= 11.4.5)
+  - AVOSCloudIM/_ARC (11.4.5):
+    - AVOSCloud (= 11.4.5)
+    - AVOSCloudIM/_NOARC (= 11.4.5)
+  - AVOSCloudIM/_NOARC (11.4.5):
+    - AVOSCloud (= 11.4.5)
   - Default (2.1.0)
   - Differentiator (3.1.0)
+  - JCore (1.2.5)
+  - JPush (3.0.9):
+    - JCore (~> 1.2.0)
   - MBProgressHUD (1.1.0)
   - ObjectMapper (3.3.0)
   - RxCocoa (4.3.1):
@@ -16,16 +29,21 @@ PODS:
     - RxCocoa (~> 4.0)
     - RxSwift (~> 4.0)
   - RxSwift (4.3.1)
+  - SwiftWebVC (0.4.2)
   - SwiftyJSON (3.0.0)
 
 DEPENDENCIES:
   - AlamofireImage (~> 3.1)
   - AlamofireObjectMapper (~> 5.0)
+  - AVOSCloud
+  - AVOSCloudIM
   - Default
+  - JPush (~> 3.0.7)
   - MBProgressHUD
   - RxCocoa (~> 4.0)
   - RxDataSources (~> 3.0)
   - RxSwift (~> 4.0)
+  - SwiftWebVC
   - SwiftyJSON (= 3.0.0)
 
 SPEC REPOS:
@@ -33,28 +51,38 @@ SPEC REPOS:
     - Alamofire
     - AlamofireImage
     - AlamofireObjectMapper
+    - AVOSCloud
+    - AVOSCloudIM
     - Default
     - Differentiator
+    - JCore
+    - JPush
     - MBProgressHUD
     - ObjectMapper
     - RxCocoa
     - RxDataSources
     - RxSwift
+    - SwiftWebVC
     - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
   AlamofireImage: 78d67ccbb763d87ba44b21583d2153500a195630
   AlamofireObjectMapper: 3395e698901d8b0e6f48b7d0c43bd47875325102
+  AVOSCloud: 1c21d946e5422597353519b31c780c04ec5f4f5e
+  AVOSCloudIM: 3ae1b46db83ec4d62a68cb7a50f6bdc68b5138ac
   Default: 6b79a17b84763dac64c2e49ea1198c00ce8c2631
   Differentiator: be49ca3408f0ecfc761e4c7763d20c62be01b9ad
+  JCore: 14706de2640b25fb77dbd02332696491407f37c9
+  JPush: 48041e8c5ad2ef9b48709eb0888af9640b36e9b0
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
   ObjectMapper: b612bf8c8e99c4dc0bb6013a51f7c27966ed5da9
   RxCocoa: 78763c7b07d02455598d9fc3c1ad091a28b73635
   RxDataSources: a843bad90c29817f5923ec8163f4af2de084ceb3
   RxSwift: fe0fd770a43acdb7d0a53da411c9b892e69bb6e4
+  SwiftWebVC: ecc4feaabe5a3f75e059a0a345d3386bb0d16c44
   SwiftyJSON: f57b2b44bc166617372d1c70773591fe9f0f5fd4
 
-PODFILE CHECKSUM: f9ebd4af860743ea9e857bda3827da0bf20ecb54
+PODFILE CHECKSUM: 780b834762a01d9efcc6ca777c406a87a50ea397
 
 COCOAPODS: 1.5.3

@@ -8,14 +8,36 @@
 
 import UIKit
 import MBProgressHUD
+import AVOSCloud
+import AdSupport
+import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, JPUSHRegisterDelegate {
+    func jpushNotificationCenter(_ center: UNUserNotificationCenter!, willPresent notification: UNNotification!, withCompletionHandler completionHandler: ((Int) -> Void)!) {
+        
+    }
+    
+    func jpushNotificationCenter(_ center: UNUserNotificationCenter!, didReceive response: UNNotificationResponse!, withCompletionHandler completionHandler: (() -> Void)!) {
+        
+    }
+    
 
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        AVOSCloud.setApplicationId("vmYOlP03MVPE2BTX1PkT0ohv-gzGzoHsz", clientKey: "UMJm3zriwzl0lL49HQCyOkiQ")
+        application.applicationIconBadgeNumber = 0
+        
+        if((UIDevice.current.systemVersion as NSString).floatValue >= 8.0) {
+            // 可以自定义 categories
+            JPUSHService.register(forRemoteNotificationTypes: UIUserNotificationType.badge.rawValue | UIUserNotificationType.badge.rawValue | UIUserNotificationType.alert.rawValue , categories: nil)
+        } else {
+            JPUSHService.register(forRemoteNotificationTypes: UIUserNotificationType.badge.rawValue | UIUserNotificationType.badge.rawValue | UIUserNotificationType.alert.rawValue , categories: nil)
+        }
+        JPUSHService.setup(withOption: launchOptions, appKey: "c85190354f07f74a21b2be10", channel: "apptest1", apsForProduction: false)
+        
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = UINavigationController(rootViewController: MovieListViewController(nibName: "MovieListViewController", bundle: nil))
@@ -68,6 +90,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }))
         window!.rootViewController!.present(alert, animated: true, completion: nil)
     }
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "DidRegisterRemoteNotification"), object: deviceToken)
+        JPUSHService.registerDeviceToken(deviceToken)
+    }
 
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print("error ===================\n==================")
+        print(error)
+    }
 }
 
