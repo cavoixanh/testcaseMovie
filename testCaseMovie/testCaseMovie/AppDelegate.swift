@@ -36,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, JPUSHRegisterDelegate {
         } else {
             JPUSHService.register(forRemoteNotificationTypes: UIUserNotificationType.badge.rawValue | UIUserNotificationType.badge.rawValue | UIUserNotificationType.alert.rawValue , categories: nil)
         }
-        JPUSHService.setup(withOption: launchOptions, appKey: "c85190354f07f74a21b2be10", channel: "apptest1", apsForProduction: false)
+        JPUSHService.setup(withOption: launchOptions, appKey: "c85190354f07f74a21b2be10", channel: "apptest1", apsForProduction: true)
         
         
         window = UIWindow(frame: UIScreen.main.bounds)
