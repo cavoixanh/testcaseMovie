@@ -12,10 +12,11 @@ target 'testCaseMovie' do
   pod 'AlamofireImage', '~> 3.1'
   pod 'AlamofireObjectMapper', '~> 5.0'
   pod 'SwiftyJSON', '3.0.0'
-  pod 'Default'
   pod 'MBProgressHUD'
   pod 'AVOSCloud'               # 数据存储、短信、云引擎调用等基础服务模块
   pod 'AVOSCloudIM'             # 即时通讯模块
   pod 'JPush', '~> 3.0.7'
-  pod 'SwiftWebVC'
+  pod 'RESideMenu', '~> 4.0.7'
+  pod 'Realm'
+  pod 'RealmSwift'
 end

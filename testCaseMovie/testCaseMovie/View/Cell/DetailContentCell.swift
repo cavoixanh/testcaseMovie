@@ -30,7 +30,7 @@ class DetailContentCell: UITableViewCell {
             break;
         case 3:
             titleString = "Duration"
-            contenString = aMovieDetail.runtime == nil ? "" : "\(aMovieDetail.runtime!) Minutes"
+            contenString = aMovieDetail.runtime == nil ? "" : "\(aMovieDetail.runtime) Minutes"
             break;
         case 4:
             titleString = "Release Date"

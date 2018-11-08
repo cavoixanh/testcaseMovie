@@ -20,25 +20,25 @@ class MovieDetailViewModel: NSObject, UITableViewDelegate, UITableViewDataSource
     
     func fetchDetail(aMovieID: Int64){
         
-        if !Reachability.isConnectedToNetwork() {
-            APIService.getDataDetailMovieFromLocal(idMovie: aMovieID).subscribe(
-                onNext: {(dataModel) in
-                    if dataModel != nil{
-                        self.movieDetailModel = dataModel
-                        if self.reloadTableViewBlock != nil {
-                            self.reloadTableViewBlock!()
-                        }
-                    }
-                    
-                    self.alertNetWork()
-            },
-                onError: {(error) in
-                    
-            },
-                onCompleted: {
-                    
-            }).disposed(by: self.disposeBag)
-        }else{
+//        if !Reachability.isConnectedToNetwork() {
+//            APIService.getDataDetailMovieFromLocal(idMovie: aMovieID).subscribe(
+//                onNext: {(dataModel) in
+//                    if dataModel != nil{
+//                        self.movieDetailModel = dataModel
+//                        if self.reloadTableViewBlock != nil {
+//                            self.reloadTableViewBlock!()
+//                        }
+//                    }
+//
+//                    self.alertNetWork()
+//            },
+//                onError: {(error) in
+//
+//            },
+//                onCompleted: {
+//
+//            }).disposed(by: self.disposeBag)
+//        }else{
             AppDelegate.appDelegate().showLoading()
             APIService.fetchMovieDetail(movieID: aMovieID).subscribe(
                 onNext: {(dataModel) in
@@ -55,7 +55,7 @@ class MovieDetailViewModel: NSObject, UITableViewDelegate, UITableViewDataSource
                 onCompleted: {
                     
             }).disposed(by: self.disposeBag)
-        }
+        //}
         
         
     }

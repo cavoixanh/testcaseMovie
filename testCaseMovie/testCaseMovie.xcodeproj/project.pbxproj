@@ -29,7 +29,15 @@
 		8438D3E72188C48000A4F1C9 /* DetailHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8438D3E52188C48000A4F1C9 /* DetailHeaderCell.xib */; };
 		8438D3EA2188C49300A4F1C9 /* DetailContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8438D3E82188C49300A4F1C9 /* DetailContentCell.swift */; };
 		8438D3EB2188C49300A4F1C9 /* DetailContentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8438D3E92188C49300A4F1C9 /* DetailContentCell.xib */; };
-		847745062191353D006B6FD6 /* SwiftWebVC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 847745052191353D006B6FD6 /* SwiftWebVC.framework */; };
+		846F8035219287E5004F4BD2 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846F8033219287E5004F4BD2 /* WebViewController.swift */; };
+		846F8036219287E5004F4BD2 /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 846F8034219287E5004F4BD2 /* WebViewController.xib */; };
+		846F8039219290D2004F4BD2 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846F8037219290D2004F4BD2 /* MenuViewController.swift */; };
+		846F803A219290D2004F4BD2 /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 846F8038219290D2004F4BD2 /* MenuViewController.xib */; };
+		846F803D2192CCCF004F4BD2 /* MovieSaveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846F803B2192CCCF004F4BD2 /* MovieSaveViewController.swift */; };
+		846F803E2192CCCF004F4BD2 /* MovieSaveViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 846F803C2192CCCF004F4BD2 /* MovieSaveViewController.xib */; };
+		846F80402192CD41004F4BD2 /* MovieSaveViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846F803F2192CD41004F4BD2 /* MovieSaveViewModel.swift */; };
+		846F80432192F505004F4BD2 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846F80412192F505004F4BD2 /* SearchViewController.swift */; };
+		846F80442192F505004F4BD2 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 846F80422192F505004F4BD2 /* SearchViewController.xib */; };
 		84774509219158E8006B6FD6 /* libjpush-ios-3.0.9.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84774508219158E8006B6FD6 /* libjpush-ios-3.0.9.a */; };
 		84D7C97521895AFC009FEF31 /* MovideDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7C97421895AFC009FEF31 /* MovideDetailModel.swift */; };
 		84D7C97721895B1E009FEF31 /* GenreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7C97621895B1E009FEF31 /* GenreModel.swift */; };
@@ -64,6 +72,15 @@
 		8438D3E52188C48000A4F1C9 /* DetailHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailHeaderCell.xib; sourceTree = "<group>"; };
 		8438D3E82188C49300A4F1C9 /* DetailContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailContentCell.swift; sourceTree = "<group>"; };
 		8438D3E92188C49300A4F1C9 /* DetailContentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailContentCell.xib; sourceTree = "<group>"; };
+		846F8033219287E5004F4BD2 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		846F8034219287E5004F4BD2 /* WebViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebViewController.xib; sourceTree = "<group>"; };
+		846F8037219290D2004F4BD2 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		846F8038219290D2004F4BD2 /* MenuViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuViewController.xib; sourceTree = "<group>"; };
+		846F803B2192CCCF004F4BD2 /* MovieSaveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSaveViewController.swift; sourceTree = "<group>"; };
+		846F803C2192CCCF004F4BD2 /* MovieSaveViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieSaveViewController.xib; sourceTree = "<group>"; };
+		846F803F2192CD41004F4BD2 /* MovieSaveViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSaveViewModel.swift; sourceTree = "<group>"; };
+		846F80412192F505004F4BD2 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		846F80422192F505004F4BD2 /* SearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
 		847744FE21912E8C006B6FD6 /* testCaseMovie-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "testCaseMovie-Bridging-Header.h"; sourceTree = "<group>"; };
 		847745052191353D006B6FD6 /* SwiftWebVC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftWebVC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8477450721913EE9006B6FD6 /* testCaseMovie.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = testCaseMovie.entitlements; sourceTree = "<group>"; };
@@ -82,7 +99,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				84774509219158E8006B6FD6 /* libjpush-ios-3.0.9.a in Frameworks */,
-				847745062191353D006B6FD6 /* SwiftWebVC.framework in Frameworks */,
 				57AB079B880CCE1082ABDF79 /* Pods_testCaseMovie.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -178,6 +194,7 @@
 				841FC4D921883C6500889135 /* MovieListViewModel.swift */,
 				8438D3E22188B91400A4F1C9 /* MovieDetailViewModel.swift */,
 				84D7C97A21898348009FEF31 /* DetailContentCellViewModel.swift */,
+				846F803F2192CD41004F4BD2 /* MovieSaveViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -190,6 +207,14 @@
 				841FC4DC21883C9F00889135 /* MovieListViewController.xib */,
 				8438D3DE2188B8D300A4F1C9 /* MovieDetailViewController.swift */,
 				8438D3DF2188B8D300A4F1C9 /* MovieDetailViewController.xib */,
+				846F8033219287E5004F4BD2 /* WebViewController.swift */,
+				846F8034219287E5004F4BD2 /* WebViewController.xib */,
+				846F8037219290D2004F4BD2 /* MenuViewController.swift */,
+				846F8038219290D2004F4BD2 /* MenuViewController.xib */,
+				846F803B2192CCCF004F4BD2 /* MovieSaveViewController.swift */,
+				846F803C2192CCCF004F4BD2 /* MovieSaveViewController.xib */,
+				846F80412192F505004F4BD2 /* SearchViewController.swift */,
+				846F80422192F505004F4BD2 /* SearchViewController.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -304,9 +329,13 @@
 				8438D3E72188C48000A4F1C9 /* DetailHeaderCell.xib in Resources */,
 				8438D3E12188B8D300A4F1C9 /* MovieDetailViewController.xib in Resources */,
 				841FC4C0218813E600889135 /* LaunchScreen.storyboard in Resources */,
+				846F8036219287E5004F4BD2 /* WebViewController.xib in Resources */,
+				846F803A219290D2004F4BD2 /* MenuViewController.xib in Resources */,
 				841FC4BD218813E600889135 /* Assets.xcassets in Resources */,
 				8438D3EB2188C49300A4F1C9 /* DetailContentCell.xib in Resources */,
+				846F80442192F505004F4BD2 /* SearchViewController.xib in Resources */,
 				841FC4E6218844D000889135 /* MovieListCell.xib in Resources */,
+				846F803E2192CCCF004F4BD2 /* MovieSaveViewController.xib in Resources */,
 				841FC4DE21883C9F00889135 /* MovieListViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -328,14 +357,15 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
-				"${BUILT_PRODUCTS_DIR}/Default/Default.framework",
 				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/RESideMenu/RESideMenu.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftWebVC/SwiftWebVC.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -347,14 +377,15 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Default.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RESideMenu.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftWebVC.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -394,17 +425,22 @@
 				841FC4E5218844D000889135 /* MovieListCell.swift in Sources */,
 				841FC4D62188354300889135 /* MovieModel.swift in Sources */,
 				8438D3EA2188C49300A4F1C9 /* DetailContentCell.swift in Sources */,
+				846F80402192CD41004F4BD2 /* MovieSaveViewModel.swift in Sources */,
+				846F8035219287E5004F4BD2 /* WebViewController.swift in Sources */,
 				841FC4D4218834D100889135 /* MovieListModel.swift in Sources */,
 				84D7C97921895C00009FEF31 /* CompanyModel.swift in Sources */,
 				8438D3E02188B8D300A4F1C9 /* MovieDetailViewController.swift in Sources */,
 				8438D3E32188B91400A4F1C9 /* MovieDetailViewModel.swift in Sources */,
 				84D7C97721895B1E009FEF31 /* GenreModel.swift in Sources */,
 				84D7C97B21898348009FEF31 /* DetailContentCellViewModel.swift in Sources */,
+				846F8039219290D2004F4BD2 /* MenuViewController.swift in Sources */,
 				841FC4DA21883C6500889135 /* MovieListViewModel.swift in Sources */,
 				841FC4CC2188172000889135 /* APIService.swift in Sources */,
 				841FC4E121883DD400889135 /* Extensions.swift in Sources */,
+				846F803D2192CCCF004F4BD2 /* MovieSaveViewController.swift in Sources */,
 				84D7C97521895AFC009FEF31 /* MovideDetailModel.swift in Sources */,
 				841FC4D0218825F000889135 /* Constant.swift in Sources */,
+				846F80432192F505004F4BD2 /* SearchViewController.swift in Sources */,
 				841FC4DD21883C9F00889135 /* MovieListViewController.swift in Sources */,
 				8438D3E62188C48000A4F1C9 /* DetailHeaderCell.swift in Sources */,
 				841FC4CE218817D300889135 /* Endpoints.swift in Sources */,
@@ -553,7 +589,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6H6MYWF9HX;
 				INFOPLIST_FILE = testCaseMovie/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -581,7 +617,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6H6MYWF9HX;
 				INFOPLIST_FILE = testCaseMovie/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

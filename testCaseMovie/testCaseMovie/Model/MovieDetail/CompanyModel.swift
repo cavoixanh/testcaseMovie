@@ -8,6 +8,12 @@
 
 import UIKit
 
-struct CompanyModel: Codable {
-    let name: String?
+class CompanyModel: NSObject {
+    var name: String = ""
+    
+    init(dict: Any) {
+        if let data = dict as? [String: Any] {
+            name = data["name"] as? String ?? ""
+        }
+    }
 }

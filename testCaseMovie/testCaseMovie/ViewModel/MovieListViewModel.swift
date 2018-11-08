@@ -31,7 +31,7 @@ class MovieListViewModel: NSObject, UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MovieListCell", for: indexPath) as! MovieListCell
         cell.minHeight = CGFloat(minHeightCell)
         cell.setMovieModel(aMovieModel: (movieModelArray[indexPath.row]))
-        if !isOfflineMode && indexPath.row == ((movieModelArray.count) - 3){
+        if  indexPath.row == ((movieModelArray.count) - 3){
             page+=1
             fetchData()
         }
@@ -50,48 +50,48 @@ class MovieListViewModel: NSObject, UITableViewDelegate, UITableViewDataSource {
     }
     
     func fetchData(){
-        if isOfflineMode {
-            APIService.getDataListMovieFromLocal().subscribe(
-                onNext: {(movieList) in
-                    self.movieModelArray = movieList
-                    if movieList.count > 0 && self.reloadTableViewBlock != nil{
-                        self.reloadTableViewBlock!()
-                    }
-                    
-                    if !Reachability.isConnectedToNetwork(){
-                        self.alertNetWork()
-                        return;
-                    }
-                    
-                    APIService.fetchMovieList(page: self.page).subscribe(
-                        onNext: {(dataModel) in
-                            
-                            if self.page == 1 {
-                                self.movieModelArray.removeAll()
-                            }
-                            self.isOfflineMode = false
-                            self.movieModelArray += dataModel.results
-                            
-                            if self.reloadTableViewBlock != nil{
-                                self.reloadTableViewBlock!()
-                            }
-                    },
-                        onError: {(error) in
-                            self.isOfflineMode = true
-                            self.alertNetWork()
-                    },
-                        onCompleted: {
-                            
-                    }).disposed(by: self.disposeBag)
-            },
-                onError: {(error) in
-                    
-            },
-                onCompleted: {
-                    
-            }).disposed(by: disposeBag)
-        }else{
-            
+//        if isOfflineMode {
+//            APIService.getDataListMovieFromLocal().subscribe(
+//                onNext: {(movieList) in
+//                    self.movieModelArray = movieList
+//                    if movieList.count > 0 && self.reloadTableViewBlock != nil{
+//                        self.reloadTableViewBlock!()
+//                    }
+//
+//                    if !Reachability.isConnectedToNetwork(){
+//                        self.alertNetWork()
+//                        return;
+//                    }
+//
+//                    APIService.fetchMovieList(page: self.page).subscribe(
+//                        onNext: {(dataModel) in
+//
+//                            if self.page == 1 {
+//                                self.movieModelArray.removeAll()
+//                            }
+//                            self.isOfflineMode = false
+//                            self.movieModelArray += dataModel.results
+//
+//                            if self.reloadTableViewBlock != nil{
+//                                self.reloadTableViewBlock!()
+//                            }
+//                    },
+//                        onError: {(error) in
+//                            self.isOfflineMode = true
+//                            self.alertNetWork()
+//                    },
+//                        onCompleted: {
+//
+//                    }).disposed(by: self.disposeBag)
+//            },
+//                onError: {(error) in
+//
+//            },
+//                onCompleted: {
+//
+//            }).disposed(by: disposeBag)
+//        }else{
+        
             APIService.fetchMovieList(page: self.page).subscribe(
                 onNext: {(dataModel) in
                     self.movieModelArray += dataModel.results
@@ -108,7 +108,7 @@ class MovieListViewModel: NSObject, UITableViewDelegate, UITableViewDataSource {
                 onCompleted: {
                     
             }).disposed(by: self.disposeBag)
-        }
+        //}
    }
     
     func alertNetWork(){

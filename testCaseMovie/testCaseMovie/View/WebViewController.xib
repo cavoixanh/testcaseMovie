@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WebViewController" customModule="testCaseMovie" customModuleProvider="target">
+            <connections>
+                <outlet property="backButton" destination="9P1-oT-Wnz" id="rDx-V6-O49"/>
+                <outlet property="homeButton" destination="t0p-XD-FjR" id="JAd-bd-lrf"/>
+                <outlet property="nextButton" destination="3WU-ox-6cE" id="bzV-zW-6vO"/>
+                <outlet property="refreshButton" destination="tLu-IX-09D" id="lwi-xm-XN9"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="webView" destination="fof-Yy-xFr" id="pEN-JI-0Ra"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jbx-mx-OuQ">
+                    <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="T2a-jr-2hA"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t0p-XD-FjR">
+                    <rect key="frame" x="0.0" y="617" width="95" height="50"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" image="home_icon"/>
+                    <connections>
+                        <action selector="homeButtonAction" destination="-1" eventType="touchUpInside" id="6fn-yw-MK1"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9P1-oT-Wnz">
+                    <rect key="frame" x="95" y="617" width="94.5" height="50"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" image="back_icon"/>
+                    <connections>
+                        <action selector="backButtonAction" destination="-1" eventType="touchUpInside" id="jDQ-qy-LZl"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3WU-ox-6cE">
+                    <rect key="frame" x="189.5" y="617" width="95" height="50"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" image="next_icon"/>
+                    <connections>
+                        <action selector="nextButtonAction" destination="-1" eventType="touchUpInside" id="Wf8-Xg-0qZ"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tLu-IX-09D">
+                    <rect key="frame" x="284.5" y="617" width="90.5" height="50"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" image="reload_icon"/>
+                    <connections>
+                        <action selector="refreshButtonAction" destination="-1" eventType="touchUpInside" id="hfO-rq-W1Z"/>
+                    </connections>
+                </button>
+                <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fof-Yy-xFr">
+                    <rect key="frame" x="0.0" y="20" width="375" height="597"/>
+                    <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </webView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="fof-Yy-xFr" secondAttribute="bottom" constant="50" id="4F8-7y-Y7Q"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="t0p-XD-FjR" secondAttribute="bottom" id="56q-wD-jfg"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="tLu-IX-09D" secondAttribute="trailing" id="5qc-d6-Zza"/>
+                <constraint firstItem="t0p-XD-FjR" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="1:4" constant="1" id="8Uj-Ni-3y2"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="3WU-ox-6cE" secondAttribute="bottom" id="HlA-dM-cQ4"/>
+                <constraint firstItem="9P1-oT-Wnz" firstAttribute="width" secondItem="t0p-XD-FjR" secondAttribute="width" id="KIm-VD-f8J"/>
+                <constraint firstItem="jbx-mx-OuQ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="P3Z-Wb-Loe"/>
+                <constraint firstItem="fof-Yy-xFr" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="RQl-xX-bs2"/>
+                <constraint firstItem="tLu-IX-09D" firstAttribute="top" secondItem="3WU-ox-6cE" secondAttribute="top" id="TLR-7p-ZD3"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="jbx-mx-OuQ" secondAttribute="trailing" id="VDP-eF-i2L"/>
+                <constraint firstItem="3WU-ox-6cE" firstAttribute="leading" secondItem="9P1-oT-Wnz" secondAttribute="trailing" id="VH3-iX-QXJ"/>
+                <constraint firstItem="tLu-IX-09D" firstAttribute="leading" secondItem="3WU-ox-6cE" secondAttribute="trailing" id="a4v-Kw-e1o"/>
+                <constraint firstItem="fof-Yy-xFr" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="b8j-Sr-7Rd"/>
+                <constraint firstItem="3WU-ox-6cE" firstAttribute="top" secondItem="9P1-oT-Wnz" secondAttribute="top" id="icL-BS-z2Y"/>
+                <constraint firstItem="t0p-XD-FjR" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="jMC-uO-G7K"/>
+                <constraint firstItem="9P1-oT-Wnz" firstAttribute="height" secondItem="t0p-XD-FjR" secondAttribute="height" id="k6f-EG-6QX"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="fof-Yy-xFr" secondAttribute="trailing" id="kge-z5-B5n"/>
+                <constraint firstItem="3WU-ox-6cE" firstAttribute="height" secondItem="9P1-oT-Wnz" secondAttribute="height" id="mfZ-Sh-lzZ"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="jbx-mx-OuQ" secondAttribute="bottom" id="pqr-hW-Du8"/>
+                <constraint firstItem="tLu-IX-09D" firstAttribute="height" secondItem="3WU-ox-6cE" secondAttribute="height" id="ps7-yf-S8u"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="tLu-IX-09D" secondAttribute="bottom" id="qCv-17-VIW"/>
+                <constraint firstItem="9P1-oT-Wnz" firstAttribute="leading" secondItem="t0p-XD-FjR" secondAttribute="trailing" id="rm5-Xa-Npf"/>
+                <constraint firstItem="3WU-ox-6cE" firstAttribute="width" secondItem="9P1-oT-Wnz" secondAttribute="width" id="tVC-gY-DUA"/>
+                <constraint firstItem="t0p-XD-FjR" firstAttribute="top" secondItem="fof-Yy-xFr" secondAttribute="bottom" id="ta2-xz-iyS"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="9P1-oT-Wnz" secondAttribute="bottom" id="v8b-Jo-8Ge"/>
+                <constraint firstItem="9P1-oT-Wnz" firstAttribute="top" secondItem="t0p-XD-FjR" secondAttribute="top" id="yHw-Fh-j4a"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="back_icon" width="21" height="21"/>
+        <image name="home_icon" width="21" height="21"/>
+        <image name="next_icon" width="21" height="21"/>
+        <image name="reload_icon" width="21" height="21"/>
+    </resources>
+</document>

@@ -11,13 +11,18 @@ import MBProgressHUD
 import AVOSCloud
 import AdSupport
 import UserNotifications
+import RESideMenu
+import MessageUI
+
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, JPUSHRegisterDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, JPUSHRegisterDelegate, MFMailComposeViewControllerDelegate {
+    @available(iOS 10.0, *)
     func jpushNotificationCenter(_ center: UNUserNotificationCenter!, willPresent notification: UNNotification!, withCompletionHandler completionHandler: ((Int) -> Void)!) {
         
     }
     
+    @available(iOS 10.0, *)
     func jpushNotificationCenter(_ center: UNUserNotificationCenter!, didReceive response: UNNotificationResponse!, withCompletionHandler completionHandler: (() -> Void)!) {
         
     }
@@ -39,13 +44,74 @@ class AppDelegate: UIResponder, UIApplicationDelegate, JPUSHRegisterDelegate {
         JPUSHService.setup(withOption: launchOptions, appKey: "c85190354f07f74a21b2be10", channel: "apptest1", apsForProduction: true)
         
         
+        /*
+         
+         RESideMenu *sideMenuViewController = [[RESideMenu alloc] initWithContentViewController:navigationController
+         leftMenuViewController:leftMenuViewController
+         rightMenuViewController:rightMenuViewController];
+         sideMenuViewController.backgroundImage = [UIImage imageNamed:@"Stars"];
+         
+         // Make it a root controller
+         //
+         self.window.rootViewController = sideMenuViewController;
+         
+         */
+        
+        let sideMenuVC = RESideMenu(contentViewController: UINavigationController(rootViewController: MovieListViewController(nibName: "MovieListViewController", bundle: nil)), leftMenuViewController: MenuViewController(nibName: "MenuViewController", bundle: nil), rightMenuViewController: nil)
+        
+        
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = UINavigationController(rootViewController: MovieListViewController(nibName: "MovieListViewController", bundle: nil))
+        window?.rootViewController = sideMenuVC //UINavigationController(rootViewController: MovieListViewController(nibName: "MovieListViewController", bundle: nil))
         window?.makeKeyAndVisible()
         
         return true
     }
 
+    func changeMenu(index: Int) {
+        //http://itoideal.com/about-us/
+        switch index {
+        case 0:
+            let sideMenuVC = RESideMenu(contentViewController: UINavigationController(rootViewController: MovieListViewController(nibName: "MovieListViewController", bundle: nil)), leftMenuViewController: MenuViewController(nibName: "MenuViewController", bundle: nil), rightMenuViewController: nil)
+            self.window?.rootViewController = sideMenuVC
+            break
+        case 1:
+            let sideMenuVC = RESideMenu(contentViewController: UINavigationController(rootViewController: MovieSaveViewController(nibName: "MovieSaveViewController", bundle: nil)), leftMenuViewController: MenuViewController(nibName: "MenuViewController", bundle: nil), rightMenuViewController: nil)
+            self.window?.rootViewController = sideMenuVC
+            break
+        case 2:
+            
+            let webView = WebViewController(nibName:"WebViewController", bundle:nil)
+            webView.otherURL = "http://itoideal.com/about-us/"
+            
+            let sideMenuVC = RESideMenu(contentViewController: UINavigationController(rootViewController: webView), leftMenuViewController: MenuViewController(nibName: "MenuViewController", bundle: nil), rightMenuViewController: nil)
+            self.window?.rootViewController = sideMenuVC
+            break;
+            
+        default:
+            changeMenu(index: 0)
+            sendEmail()
+            break;
+        }
+        
+    }
+    
+    func sendEmail() {
+        if MFMailComposeViewController.canSendMail() {
+            let mail = MFMailComposeViewController()
+            mail.mailComposeDelegate = self
+            mail.setToRecipients(["thett01337@hotmail.com"])
+            mail.setMessageBody("<p>My feedback: </p>", isHTML: true)
+            
+            self.window?.rootViewController!.present(mail, animated: true)
+        } else {
+            // show failure alert
+        }
+    }
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true)
+    }
+    
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.

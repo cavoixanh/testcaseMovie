@@ -13,7 +13,6 @@ import AlamofireImage
 import RxSwift
 import SwiftyJSON
 import ObjectMapper
-import Default
 
 class APIService {
     static let shared = APIService()
@@ -44,21 +43,13 @@ class APIService {
                     
                     switch response.result {
                     case .success:
-                        let json = JSON(response.result.value!)
                         
-                        let jsonData = "\(json)".data(using: .utf8)!
-                        let decoder = JSONDecoder()
-                        do{
-                            let movieList = try decoder.decode(MovieListModel.self, from: jsonData)
-                            if page == 1 {
-                                self.removeCacheData()
-                            }
-                            self.saveDataListMovieToLocal(model: movieList)
+                        if let response = (response.result.value! as? [String: Any]){
+                            let movieList = MovieListModel(dict: response)
                             observer.onNext(movieList)
                             observer.onCompleted()
-                        } catch{
-                            print(response.result.value!)
                         }
+                        
                     case .failure(let error):
                         if error._code == NSURLErrorTimedOut {
                             return
@@ -97,18 +88,14 @@ class APIService {
                             observer.onError(errorTemp)
                             return;
                         }
-                        let jsonData = "\(json)".data(using: .utf8)!
-                        let decoder = JSONDecoder()
-                        do{
-                            let movieDetail = try decoder.decode(MovideDetailModel.self, from: jsonData)
-                            self.removeCacheDetailData(idMovie: movieDetail.id ?? 0)
-                            self.saveDataDetailMovieToLocal(model: movieDetail)
-                            observer.onNext(movieDetail)
-                        }catch{
-                            print(response.result.value!)
-                        }
                         
+                        if let response = (response.result.value! as? [String: Any]){
+                            let movieDetail = MovideDetailModel(dict: response)
+                            observer.onNext(movieDetail)
+                            
+                        }
                         observer.onCompleted()
+                        
                     case .failure(let error):
                         if error._code == NSURLErrorTimedOut {
                             return
@@ -125,79 +112,79 @@ class APIService {
         }
     }
     
-    static func saveDataListMovieToLocal(model:MovieListModel){
-        if let arr = UserDefaults.standard.df.fetch(forKey: Constant.LIST_MOVIE_DATA, type: [MovieModel].self) {
-            let tempArray = arr + model.results
-            UserDefaults.standard.df.store(tempArray, forKey: Constant.LIST_MOVIE_DATA)
-        }else{
-            UserDefaults.standard.df.store(model.results, forKey: Constant.LIST_MOVIE_DATA)
-        }
-    }
-    
-    static func getDataListMovieFromLocal() -> Observable<[MovieModel]> {
-    
-        return Observable.create{ observer in
-    
-            if let arr = UserDefaults.standard.df.fetch(forKey: Constant.LIST_MOVIE_DATA, type: [MovieModel].self) {
-                observer.onNext(arr)
-            }else{
-                observer.onNext([])
-            }
-            observer.onCompleted()
-            return Disposables.create(with: {
-    
-            })
-        }
-    }
-    
-    static func saveDataDetailMovieToLocal(model:MovideDetailModel){
-        if let arr = UserDefaults.standard.df.fetch(forKey: Constant.DETAIL_MOVIE_DATA, type: [MovideDetailModel].self) {
-            var tempArray = arr
-            tempArray.append(model)
-            UserDefaults.standard.df.store(tempArray, forKey: Constant.DETAIL_MOVIE_DATA)
-        }else{
-            UserDefaults.standard.df.store([model], forKey: Constant.DETAIL_MOVIE_DATA)
-        }
-    }
-    
-    static func getDataDetailMovieFromLocal(idMovie:Int64) -> Observable<MovideDetailModel?> {
-        
-        return Observable.create{ observer in
-            
-            if let arr = UserDefaults.standard.df.fetch(forKey: Constant.DETAIL_MOVIE_DATA, type: [MovideDetailModel].self) {
-                if let found = arr.first(where: { (movieDetailModel) -> Bool in
-                    return movieDetailModel.id == idMovie
-                }) {
-                    observer.onNext(found)
-                }
-                observer.onNext(nil)
-            }else{
-                observer.onNext(nil)
-            }
-            observer.onCompleted()
-            return Disposables.create(with: {
-                
-            })
-        }
-    }
-    
-    static func removeCacheData(){
-        UserDefaults.standard.removeObject(forKey: Constant.LIST_MOVIE_DATA)
-    }
-    
-    static func removeCacheDetailData(idMovie: Int64) {
-        if let arr = UserDefaults.standard.df.fetch(forKey: Constant.DETAIL_MOVIE_DATA, type: [MovideDetailModel].self) {
-                if let _ = arr.first(where: { (movieDetailModel) -> Bool in
-                    return movieDetailModel.id == idMovie
-                }) {
-                    if let index = arr.index(where: { $0.id == idMovie }) {
-                        var tempArray = arr
-                        tempArray.remove(at: index)
-                        UserDefaults.standard.df.store(tempArray, forKey: Constant.DETAIL_MOVIE_DATA)
-                    }
-                }
-        }
-    }
+//    static func saveDataListMovieToLocal(model:MovieListModel){
+//        if let arr = UserDefaults.standard.df.fetch(forKey: Constant.LIST_MOVIE_DATA, type: [MovieModel].self) {
+//            let tempArray = arr + model.results
+//            UserDefaults.standard.df.store(tempArray, forKey: Constant.LIST_MOVIE_DATA)
+//        }else{
+//            UserDefaults.standard.df.store(model.results, forKey: Constant.LIST_MOVIE_DATA)
+//        }
+//    }
+//
+//    static func getDataListMovieFromLocal() -> Observable<[MovieModel]> {
+//
+//        return Observable.create{ observer in
+//
+//            if let arr = UserDefaults.standard.df.fetch(forKey: Constant.LIST_MOVIE_DATA, type: [MovieModel].self) {
+//                observer.onNext(arr)
+//            }else{
+//                observer.onNext([])
+//            }
+//            observer.onCompleted()
+//            return Disposables.create(with: {
+//
+//            })
+//        }
+//    }
+//
+//    static func saveDataDetailMovieToLocal(model:MovideDetailModel){
+//        if let arr = UserDefaults.standard.df.fetch(forKey: Constant.DETAIL_MOVIE_DATA, type: [MovideDetailModel].self) {
+//            var tempArray = arr
+//            tempArray.append(model)
+//            UserDefaults.standard.df.store(tempArray, forKey: Constant.DETAIL_MOVIE_DATA)
+//        }else{
+//            UserDefaults.standard.df.store([model], forKey: Constant.DETAIL_MOVIE_DATA)
+//        }
+//    }
+//
+//    static func getDataDetailMovieFromLocal(idMovie:Int64) -> Observable<MovideDetailModel?> {
+//
+//        return Observable.create{ observer in
+//
+//            if let arr = UserDefaults.standard.df.fetch(forKey: Constant.DETAIL_MOVIE_DATA, type: [MovideDetailModel].self) {
+//                if let found = arr.first(where: { (movieDetailModel) -> Bool in
+//                    return movieDetailModel.id == idMovie
+//                }) {
+//                    observer.onNext(found)
+//                }
+//                observer.onNext(nil)
+//            }else{
+//                observer.onNext(nil)
+//            }
+//            observer.onCompleted()
+//            return Disposables.create(with: {
+//
+//            })
+//        }
+//    }
+//
+//    static func removeCacheData(){
+//        UserDefaults.standard.removeObject(forKey: Constant.LIST_MOVIE_DATA)
+//    }
+//
+//    static func removeCacheDetailData(idMovie: Int64) {
+//        if let arr = UserDefaults.standard.df.fetch(forKey: Constant.DETAIL_MOVIE_DATA, type: [MovideDetailModel].self) {
+//                if let _ = arr.first(where: { (movieDetailModel) -> Bool in
+//                    return movieDetailModel.id == idMovie
+//                }) {
+//                    if let index = arr.index(where: { $0.id == idMovie }) {
+//                        var tempArray = arr
+//                        tempArray.remove(at: index)
+//                        UserDefaults.standard.df.store(tempArray, forKey: Constant.DETAIL_MOVIE_DATA)
+//                    }
+//                }
+//        }
+//    }
 }
 
 class AlamofireManager{

@@ -8,7 +8,11 @@
 
 import UIKit
 import MBProgressHUD
-class MovieDetailViewController: UIViewController {
+import Realm
+import RealmSwift
+
+
+class MovieDetailViewController: UIViewController, UIActionSheetDelegate {
 
     @IBOutlet var tableView: UITableView!
     
@@ -40,6 +44,74 @@ class MovieDetailViewController: UIViewController {
         tableView.estimatedRowHeight = UITableView.automaticDimension
         tableView.register(UINib(nibName: "DetailHeaderCell", bundle: nil), forCellReuseIdentifier: "DetailHeaderCell")
         tableView.register(UINib(nibName: "DetailContentCell", bundle: nil), forCellReuseIdentifier: "DetailContentCell")
+        addRightIcon()
+    }
+    
+    func addRightIcon(){
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "more_icon")!.withRenderingMode(.alwaysOriginal), style: .done, target: self, action: #selector(menuAction))
+        
+    }
+    
+    @objc func menuAction(){
+        let actionSheetControllerIOS8: UIAlertController = UIAlertController(title: "", message: "", preferredStyle: .actionSheet)
+        
+        let cancelActionButton = UIAlertAction(title: "Cancel", style: .cancel) { _ in
+            print("Cancel")
+        }
+        actionSheetControllerIOS8.addAction(cancelActionButton)
+        
+        let realm = try! Realm()
+        let result = realm.objects(MovieRealmModel.self).filter("id = \(movieModel?.id ?? -1)")
+        if result.count > 0 {
+            let deleteActionButton = UIAlertAction(title: "UnSave", style: .default)
+            { _ in
+                
+                let model = MovieRealmModel(dict: self.movieModel!)
+                let realm = try! Realm()
+                try! realm.write {
+                    realm.delete(result.first!)
+                }
+                
+                //print("Save")
+            }
+            actionSheetControllerIOS8.addAction(deleteActionButton)
+        }else{
+            let saveActionButton = UIAlertAction(title: "Save", style: .default)
+            { _ in
+                
+                let model = MovieRealmModel(dict: self.movieModel!)
+                let realm = try! Realm()
+                try! realm.write {
+                    realm.add(model, update: true)
+                }
+                
+                //print("Save")
+            }
+            actionSheetControllerIOS8.addAction(saveActionButton)
+        }
+        
+        
+        
+        
+        let deleteActionButton = UIAlertAction(title: "Share", style: .default)
+        { _ in
+            print("share")
+            let image = UIImage(named: "next_icon")
+            let text = self.movieModel?.title
+            
+            // set up activity view controller
+            let imageToShare = [ text,image! ] as [Any]
+            let activityViewController = UIActivityViewController(activityItems: imageToShare, applicationActivities: nil)
+            activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
+            
+            // exclude some activity types from the list (optional)
+            activityViewController.excludedActivityTypes = [ UIActivity.ActivityType.airDrop, UIActivity.ActivityType.postToFacebook ]
+            
+            // present the view controller
+            self.present(activityViewController, animated: true, completion: nil)
+        }
+        actionSheetControllerIOS8.addAction(deleteActionButton)
+        self.present(actionSheetControllerIOS8, animated: true, completion: nil)
     }
     
     @objc func backAction(){

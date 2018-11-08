@@ -8,6 +8,12 @@
 
 import UIKit
 
-struct GenreModel: Codable {
-    let name: String?
+class GenreModel: NSObject {
+    var name: String = ""
+    
+    init(dict: Any) {
+        if let data = dict as? [String: Any] {
+            name = data["name"] as? String ?? ""
+        }
+    }
 }
